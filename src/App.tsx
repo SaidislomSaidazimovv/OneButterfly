@@ -176,6 +176,8 @@ const Navbar = () => {
   );
 };
 
+import WorkInProgress from './components/WorkInProgress';
+
 // --- Sections ---
 
 // @ts-ignore
@@ -1597,6 +1599,9 @@ const Footer = () => (
 );
 
 const App = () => {
+  return <WorkInProgress />;
+
+  /* Original site — restore by removing the line above and uncommenting this block:
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -1615,8 +1620,6 @@ const App = () => {
         <Sponsors />
         <Timeline />
         <Measurement />
-
-        {/* Values Section */}
         <section className="section bg-white">
           <div className="container">
             <FadeIn>
@@ -1638,8 +1641,6 @@ const App = () => {
             </div>
           </div>
         </section>
-
-        {/* Governance Section */}
         <section className="section bg-bg-muted/30">
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-16">
@@ -1663,11 +1664,8 @@ const App = () => {
             </div>
           </div>
         </section>
-
         <FAQ />
         <ContactForm />
-
-        {/* Final CTA */}
         <section className="section bg-accent-light/50 border-none py-32">
           <div className="container text-center max-w-[800px]">
             <FadeIn>
@@ -1680,11 +1678,11 @@ const App = () => {
             </FadeIn>
           </div>
         </section>
-
       </main>
       <Footer />
     </div>
   );
+  */
 };
 
 export default App;
