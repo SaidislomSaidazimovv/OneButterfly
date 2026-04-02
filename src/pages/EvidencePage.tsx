@@ -42,35 +42,35 @@ const CompetitiveTable = () => (
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b-2 border-ink">
-              <th className="py-6 font-bold text-ink text-[16px] pr-8">Program</th>
-              <th className="py-6 font-bold text-ink text-[16px] pr-8">Time</th>
-              <th className="py-6 font-bold text-ink text-[16px]">Type</th>
+              <th className="py-4 md:py-6 font-bold text-ink text-[14px] md:text-[16px] pr-4 md:pr-8">Program</th>
+              <th className="py-4 md:py-6 font-bold text-ink text-[14px] md:text-[16px] pr-4 md:pr-8">Time</th>
+              <th className="py-4 md:py-6 font-bold text-ink text-[14px] md:text-[16px]">Type</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-hair">
             <tr className="hover:bg-bg-muted transition-colors">
-              <td className="py-8 text-ink pr-8 text-[18px]">Mental Health First Aid</td>
-              <td className="py-8 text-muted pr-8 text-[16px]">8 hours</td>
-              <td className="py-8 text-muted text-[16px]">Knowledge certification</td>
+              <td className="py-4 md:py-8 text-ink pr-4 md:pr-8 text-[15px] md:text-[18px]">Mental Health First Aid</td>
+              <td className="py-4 md:py-8 text-muted pr-4 md:pr-8 text-[14px] md:text-[16px]">8 hours</td>
+              <td className="py-4 md:py-8 text-muted text-[14px] md:text-[16px]">Knowledge certification</td>
             </tr>
             <tr className="hover:bg-bg-muted transition-colors">
-              <td className="py-8 text-ink pr-8 text-[18px]">QPR</td>
-              <td className="py-8 text-muted pr-8 text-[16px]">1 hour</td>
-              <td className="py-8 text-muted text-[16px]">Gatekeeper training</td>
+              <td className="py-4 md:py-8 text-ink pr-4 md:pr-8 text-[15px] md:text-[18px]">QPR</td>
+              <td className="py-4 md:py-8 text-muted pr-4 md:pr-8 text-[14px] md:text-[16px]">1 hour</td>
+              <td className="py-4 md:py-8 text-muted text-[14px] md:text-[16px]">Gatekeeper training</td>
             </tr>
             <tr className="hover:bg-bg-muted transition-colors">
-              <td className="py-8 text-ink pr-8 text-[18px]">safeTALK</td>
-              <td className="py-8 text-muted pr-8 text-[16px]">3 hours</td>
-              <td className="py-8 text-muted text-[16px]">Awareness training</td>
+              <td className="py-4 md:py-8 text-ink pr-4 md:pr-8 text-[15px] md:text-[18px]">safeTALK</td>
+              <td className="py-4 md:py-8 text-muted pr-4 md:pr-8 text-[14px] md:text-[16px]">3 hours</td>
+              <td className="py-4 md:py-8 text-muted text-[14px] md:text-[16px]">Awareness training</td>
             </tr>
             <tr className="bg-accent/5 border-l-4 border-accent">
-              <td className="py-8 pr-8 text-[18px]">
+              <td className="py-4 md:py-8 pl-4 pr-4 md:pr-8 text-[15px] md:text-[18px]">
                 <span className="font-bold text-ink">Butterfly Protocol</span>
               </td>
-              <td className="py-8 pr-8 text-[16px]">
-                <span className="font-bold text-accent text-[20px]">30 seconds</span>
+              <td className="py-4 md:py-8 pr-4 md:pr-8 text-[14px] md:text-[16px]">
+                <span className="font-bold text-accent text-[16px] md:text-[20px]">30 seconds</span>
               </td>
-              <td className="py-8 text-[16px]">
+              <td className="py-4 md:py-8 text-[14px] md:text-[16px]">
                 <span className="font-bold text-accent">Activation layer</span>
               </td>
             </tr>
@@ -86,7 +86,7 @@ export default function EvidencePage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <main>
-        <section className="bg-ink text-white pt-32 pb-20 px-6">
+        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">THE EVIDENCE</span>

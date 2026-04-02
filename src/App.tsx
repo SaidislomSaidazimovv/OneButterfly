@@ -88,8 +88,8 @@ const FinalCTA = () => (
       <FadeIn>
         <h2 className="mb-8 mx-auto">Organizations that move first define what standard looks like for their industry.</h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-          <Link to="/partner" className="btn-primary px-10 py-5 text-lg h-auto">Request Implementation Brief</Link>
-          <Link to="/evidence" className="btn-ghost px-10 py-5 text-lg h-auto bg-white border-accent">Download the Full Kit — Free</Link>
+          <Link to="/partner" className="btn-primary px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto">Request Implementation Brief</Link>
+          <Link to="/evidence" className="btn-ghost px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto bg-white border-accent">Download the Full Kit — Free</Link>
         </div>
         <p className="mt-12 caption font-bold mx-auto">Questions: protocol@onehumanity.org · Response within 24 business hours</p>
       </FadeIn>

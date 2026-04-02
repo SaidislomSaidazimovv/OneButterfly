@@ -89,7 +89,7 @@ const ALSPrecedent = () => (
       <FadeIn>
         <span className="overline text-white/70 mb-4 block">THE PRECEDENT</span>
         <h2 className="text-white mb-12">The Ice Bucket Challenge proved the mechanic.</h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 mb-12">
           {[
             { stat: "17M", label: "videos" },
             { stat: "$220M", label: "raised" },
@@ -116,7 +116,7 @@ export default function LaunchPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <main>
-        <section className="bg-ink text-white pt-32 pb-20 px-6">
+        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">THE LAUNCH</span>

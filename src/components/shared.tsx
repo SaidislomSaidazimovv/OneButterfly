@@ -73,9 +73,9 @@ export const PartnerCTA = ({ headline = "Ready to partner?", buttonText = "Partn
       <FadeIn>
         <h2 className="mb-8 mx-auto">{headline}</h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-          <Link to="/partner" className="btn-primary px-10 py-5 text-lg h-auto">{buttonText}</Link>
+          <Link to="/partner" className="btn-primary px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto">{buttonText}</Link>
           {secondaryText && (
-            <Link to="/partner" className="btn-ghost px-10 py-5 text-lg h-auto bg-white border-accent">{secondaryText}</Link>
+            <Link to="/partner" className="btn-ghost px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto bg-white border-accent">{secondaryText}</Link>
           )}
         </div>
         <p className="mt-12 caption font-bold mx-auto">Questions: protocol@onehumanity.org · Response within 24 business hours</p>
@@ -182,12 +182,21 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-ink text-lg font-medium"
+                className="text-ink text-lg font-medium py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </Link>
             ))}
+            <div className="pt-4 mt-auto border-t border-hair">
+              <Link
+                to="/partner"
+                className="btn-primary w-full py-3 text-[15px]"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Request Implementation Brief
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -265,6 +274,30 @@ export const Hero = () => {
                 The Butterfly Challenge teaches the world to recognize the sign. This site shows organizations what to do when they see it.{' '}
                 <a href="https://butterflychallenge.org" className="text-accent font-bold hover:underline">butterflychallenge.org →</a>
               </p>
+            </Reveal>
+
+            {/* 4-Step Protocol Diagram */}
+            <Reveal delay={0.85}>
+              <div className="flex flex-wrap items-center gap-y-2 mt-6">
+                {[
+                  { num: "1", label: "Recognize" },
+                  { num: "2", label: "Acknowledge" },
+                  { num: "3", label: "Route" },
+                  { num: "4", label: "Document" },
+                ].map((step, i) => (
+                  <div key={i} className="flex items-center">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-bold text-[12px] sm:text-[13px] shrink-0">
+                        {step.num}
+                      </div>
+                      <span className="text-ink font-semibold text-[13px] sm:text-[14px] whitespace-nowrap">{step.label}</span>
+                    </div>
+                    {i < 3 && (
+                      <ChevronRight size={14} className="text-caption/40 mx-1 sm:mx-2 shrink-0" />
+                    )}
+                  </div>
+                ))}
+              </div>
             </Reveal>
           </div>
 
@@ -374,7 +407,7 @@ export const Highlights = () => {
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 0.1} className="shrink-0 snap-start">
               <div
-                className="card card-hover h-full w-[280px] md:w-[360px] min-h-[440px] flex flex-col justify-between bg-white hover:shadow-xl transition-all border-none p-10 cursor-pointer group"
+                className="card card-hover h-full w-[calc(100vw-48px)] sm:w-[280px] md:w-[360px] min-h-[360px] md:min-h-[440px] flex flex-col justify-between bg-white hover:shadow-xl transition-all border-none p-6 md:p-10 cursor-pointer group"
                 onClick={() => setActiveItem(item)}
               >
                 <div className="mb-auto">
@@ -474,7 +507,7 @@ export const Context = () => (
         </div>
         <div className="flex-1 w-full">
           <FadeIn delay={0.2} className="w-full">
-            <div className="relative h-[350px] md:h-[400px] flex items-center justify-center w-full">
+            <div className="relative h-[280px] sm:h-[350px] md:h-[400px] flex items-center justify-center w-full">
               <VolatilityChart />
             </div>
           </FadeIn>
@@ -487,34 +520,29 @@ export const Context = () => (
 // --- Category ---
 
 export const Category = () => (
-  <section className="relative w-full overflow-hidden bg-black h-[50rem] md:h-auto">
-    <img src={graphicImg} alt="Cover" className="w-full h-auto block pointer-events-none m-[50%_auto] md:m-0" />
-    <div className="absolute inset-0 z-10 flex flex-col justify-between pt-12 md:pt-16 pb-8 md:pb-24 px-6 md:px-0">
-      <div className="container mx-auto">
-        <FadeIn className="text-center md:mt-12">
-          <h2 className="text-white text-[28px] md:text-[64px] font-bold mb-4 md:mb-6 tracking-tight leading-tight max-w-4xl mx-auto drop-shadow-xl w-[90%] md:w-full">
-            A standard, not a program.
-          </h2>
-          <p className="max-w-2xl mx-auto text-[14px] md:text-[20px] text-white/90 font-medium leading-relaxed drop-shadow-md pb-4 border-b border-transparent">
-            Programs are optional. Standards are operational. The Butterfly Protocol is a shared micro-behavior designed to be trained, measured, audited, and improved — like any safety system.
-          </p>
-        </FadeIn>
-      </div>
-      <div className="container mt-auto">
-        <div className="grid md:grid-cols-3 gap-6 md:gap-16 max-w-5xl mx-auto">
-          {[
-            { title: 'Scope', text: 'Workplace, education, sport, community', icon: Globe },
-            { title: 'Definition', text: 'A structured check-in triggered by observable signals', icon: Target },
-            { title: 'Interfaces', text: 'Integrates with EAP, crisis lines, HR systems', icon: Lock }
-          ].map((item, i) => (
-            <FadeIn key={i} delay={i * 0.1}>
-              <item.icon size={24} className="text-white mb-2 md:mb-6" strokeWidth={1.5} />
-              <p className="text-[12px] md:text-[14px] leading-relaxed text-white/80">
-                <span className="text-white font-bold">{item.title}</span> — {item.text}.
-              </p>
-            </FadeIn>
-          ))}
-        </div>
+  <section className="section bg-bg-muted/30">
+    <div className="container">
+      <FadeIn className="text-center mb-16">
+        <h2 className="text-[#111] text-[28px] md:text-[64px] font-bold mb-4 md:mb-6 tracking-tight leading-tight max-w-4xl mx-auto w-[90%] md:w-full">
+          A standard, not a program.
+        </h2>
+        <p className="max-w-2xl mx-auto text-[14px] md:text-[20px] text-[#444] font-medium leading-relaxed">
+          Programs are optional. Standards are operational. The Butterfly Protocol is a shared micro-behavior designed to be trained, measured, audited, and improved — like any safety system.
+        </p>
+      </FadeIn>
+      <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-10 lg:gap-16 max-w-5xl mx-auto">
+        {[
+          { title: 'Scope', text: 'Workplace, education, sport, community', icon: Globe },
+          { title: 'Definition', text: 'A structured check-in triggered by observable signals', icon: Target },
+          { title: 'Interfaces', text: 'Integrates with EAP, crisis lines, HR systems', icon: Lock }
+        ].map((item, i) => (
+          <FadeIn key={i} delay={i * 0.1}>
+            <item.icon size={24} className="text-[#111] mb-2 md:mb-6" strokeWidth={1.5} />
+            <p className="text-[12px] md:text-[14px] leading-relaxed text-[#555]">
+              <span className="text-[#111] font-bold">{item.title}</span> — {item.text}.
+            </p>
+          </FadeIn>
+        ))}
       </div>
     </div>
   </section>
@@ -606,7 +634,7 @@ export const ProtocolStepper = () => {
           <span className="overline mb-4 block">THE PROTOCOL (V1.0)</span>
           <h2 className="mb-12 max-w-[800px]">Four steps. Thirty seconds. You are the first responder, not the therapist.</h2>
         </FadeIn>
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-8 md:gap-12">
           <div className="flex border-b border-hair overflow-x-auto no-scrollbar">
             {steps.map((step, i) => (
               <button key={i} onClick={() => setActiveTab(i)} className={cn("px-6 py-4 text-[14px] font-bold tracking-wider transition-all border-b-2 whitespace-nowrap", activeTab === i ? "border-accent text-accent" : "border-transparent text-caption hover:text-ink")}>
@@ -614,7 +642,7 @@ export const ProtocolStepper = () => {
               </button>
             ))}
           </div>
-          <div className="min-h-[400px]">
+          <div className="min-h-[300px] md:min-h-[400px]">
             <AnimatePresence mode="wait">
               <motion.div key={activeTab} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.3 }}>
                 <span className="overline mb-4 block text-accent">{steps[activeTab].overline}</span>
@@ -691,18 +719,18 @@ export const Evidence = () => {
         </FadeIn>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
-            <thead><tr className="border-b-2 border-ink"><th className="py-6 font-bold text-ink text-[16px] pr-8">Claim</th><th className="py-6 font-bold text-ink text-[16px]">Evidence</th></tr></thead>
+            <thead><tr className="border-b-2 border-ink"><th className="py-4 md:py-6 font-bold text-ink text-[14px] md:text-[16px] pr-4 md:pr-8">Claim</th><th className="py-4 md:py-6 font-bold text-ink text-[14px] md:text-[16px]">Evidence</th></tr></thead>
             <tbody className="divide-y divide-hair">
               {data.map((row, i) => (
-                <tr key={i} className="group hover:bg-bg-muted transition-colors">
-                  <td className="py-8 font-bold text-ink pr-8 align-top text-[18px]">{row.claim}</td>
-                  <td className="py-8 text-muted align-top text-[16px]">{row.evidence}</td>
+                <tr key={i} className="group hover:bg-[rgba(0,0,0,0.04)]" style={{ transition: 'background-color 0.2s ease' }}>
+                  <td className="py-4 md:py-8 font-bold text-ink pr-4 md:pr-8 align-top text-[15px] md:text-[18px]">{row.claim}</td>
+                  <td className="py-4 md:py-8 text-muted align-top text-[14px] md:text-[16px]">{row.evidence}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <div className="mt-20 p-12 card bg-bg-muted border-none max-w-[800px]">
+        <div className="mt-12 md:mt-20 p-6 md:p-12 card bg-bg-muted border-none max-w-[800px]">
           <h3 className="text-[18px] mb-6 font-bold uppercase tracking-wider text-caption">What we do not claim</h3>
           <ul className="space-y-3 mb-8">
             <li className="flex gap-3 text-muted">• This reduces suicide rates (no outcome study yet)</li>
@@ -747,7 +775,7 @@ export const ROICalculator = () => {
   return (
     <section className="section bg-ink text-white">
       <div className="container">
-        <div className="flex flex-col lg:flex-row gap-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
           <div className="flex-1">
             <FadeIn>
               <h2 className="text-white mb-8">What this saves your organization.</h2>
@@ -773,7 +801,7 @@ export const ROICalculator = () => {
           </div>
           <div className="lg:w-[440px] shrink-0">
             <FadeIn delay={0.2}>
-              <div className="card bg-white/5 border-white/10 p-10 flex flex-col items-center text-center">
+              <div className="card bg-white/5 border-white/10 p-6 md:p-10 flex flex-col items-center text-center">
                 <span className="overline text-white/40 mb-8 tracking-[0.2em]">YOUR PROJECTED IMPACT</span>
                 <div className="w-full space-y-4 mb-12">
                   <div className="flex justify-between text-[14px]"><span className="text-white/60">Protocol deployment cost</span><span className="font-bold">$0</span></div>
@@ -818,7 +846,7 @@ export const Training = () => {
             <thead><tr className="border-b border-hair"><th className="py-6 font-bold text-caption text-[12px] uppercase">Block</th><th className="py-6 font-bold text-caption text-[12px] uppercase">Duration</th><th className="py-6 font-bold text-caption text-[12px] uppercase">Content</th></tr></thead>
             <tbody className="divide-y divide-hair">
               {blocks.map((block, i) => (
-                <tr key={i}><td className="py-8 font-bold text-ink pr-8 align-top text-[18px]">{block.name}</td><td className="py-8 text-accent font-bold align-top text-[16px]">{block.time}</td><td className="py-8 text-muted align-top text-[16px]">{block.desc}</td></tr>
+                <tr key={i}><td className="py-4 md:py-8 font-bold text-ink pr-4 md:pr-8 align-top text-[15px] md:text-[18px]">{block.name}</td><td className="py-4 md:py-8 text-accent font-bold align-top text-[14px] md:text-[16px]">{block.time}</td><td className="py-4 md:py-8 text-muted align-top text-[14px] md:text-[16px]">{block.desc}</td></tr>
               ))}
             </tbody>
           </table>
@@ -864,7 +892,7 @@ export const Legal = () => (
           </div>
         ))}
       </div>
-      <div className="card border-none bg-ink text-white p-12 mb-12">
+      <div className="card border-none bg-ink text-white p-6 md:p-12 mb-12">
         <h3 className="text-white mb-8 text-[24px]">What the protocol does NOT create:</h3>
         <ul className="grid md:grid-cols-2 gap-4">
           {["A duty to diagnose or treat", "HIPAA obligations", "Clinical liability for non-licensed responders", "Documentation usable in performance reviews", "Documentation usable in termination proceedings"].map(item => (
@@ -1017,12 +1045,12 @@ export const Measurement = () => (
               { m: "Responder confidence survey", t: "Behavior shift", c: "Anonymous 3-question pulse" },
               { m: "EAP utilization trend", t: "Downstream impact", c: "Your EAP provider's aggregate report" }
             ].map((row, i) => (
-              <tr key={i}><td className="py-8 font-bold text-ink pr-8 align-top text-[18px]">{row.m}</td><td className="py-8 text-ink font-medium align-top text-[16px]">{row.t}</td><td className="py-8 text-muted align-top text-[16px]">{row.c}</td></tr>
+              <tr key={i}><td className="py-4 md:py-8 font-bold text-ink pr-4 md:pr-8 align-top text-[15px] md:text-[18px]">{row.m}</td><td className="py-4 md:py-8 text-ink font-medium align-top text-[14px] md:text-[16px]">{row.t}</td><td className="py-4 md:py-8 text-muted align-top text-[14px] md:text-[16px]">{row.c}</td></tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="card bg-white p-12">
+      <div className="card bg-white p-6 md:p-12">
         <h3 className="text-ink mb-8 text-[20px] font-bold uppercase tracking-widest">ESG reporting alignment:</h3>
         <div className="grid md:grid-cols-3 gap-8">
           {[
@@ -1091,7 +1119,7 @@ export const ContactForm = () => {
           <span className="overline mb-4 block uppercase tracking-widest font-bold">CONTACT</span>
           <h2 className="mb-12">Implementation inquiry.</h2>
         </FadeIn>
-        <form className="space-y-8" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+        <form className="space-y-6 md:space-y-8" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
           {[
             { label: "Name", type: "text" },
             { label: "Organization", type: "text" },
@@ -1107,11 +1135,14 @@ export const ContactForm = () => {
             <label className="text-ink font-serif font-medium">Message (optional)</label>
             <textarea rows={4} className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors resize-none" />
           </div>
+          <div className="flex flex-col gap-2">
+            <label className="text-ink font-serif font-medium">What are we missing? Tell us what matters to your brand.</label>
+            <textarea rows={3} placeholder="Share any context that would help us tailor the brief..." className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors resize-none" />
+          </div>
           <div className="space-y-4">
             <button type="submit" className="btn-primary w-full h-14 text-lg font-bold shadow-xl shadow-accent/20">
               {submitted ? "Thank you. The implementation team will respond within 48 hours." : "Send Inquiry"}
             </button>
-            <p className="text-center text-muted text-sm">What are we missing? Tell us what matters to your brand.</p>
           </div>
           {!submitted && <p className="text-center text-caption text-sm mt-4">Response within 48 business hours. Please use your primary organization email.</p>}
         </form>

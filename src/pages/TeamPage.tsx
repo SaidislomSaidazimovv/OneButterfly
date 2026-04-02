@@ -69,7 +69,7 @@ export default function TeamPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <main>
-        <section className="bg-ink text-white pt-32 pb-20 px-6">
+        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">THE TEAM</span>
@@ -106,7 +106,7 @@ export default function TeamPage() {
         <section className="section bg-white">
           <div className="container">
             <FadeIn>
-              <div className="card bg-bg-muted border-none p-12 text-center">
+              <div className="card bg-bg-muted border-none p-6 md:p-12 text-center">
                 <h2 className="mb-6 mx-auto">Governance</h2>
                 <p className="text-[18px] font-medium mb-4 mx-auto">One Humanity Foundation · 501(c)(3) · Published governance · Independent board</p>
                 <p className="mb-4 mx-auto">Developed with clinical advisors across: Psychiatry · Organizational Psychology · Emergency Medicine · Crisis Intervention</p>
