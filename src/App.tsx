@@ -98,7 +98,7 @@ const FinalCTA = () => (
 );
 
 /** Simplified Homepage — Change 2 */
-const HomePage = () => (
+/* const HomePage = () => (
   <PageWrapper>
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
@@ -110,13 +110,55 @@ const HomePage = () => (
       <Footer />
     </div>
   </PageWrapper>
+); */
+
+// @ts-ignore
+import logoSvg from './OneHumanity_logo_symbol_black.svg';
+
+const NotFoundPage = () => (
+  <div style={{ minHeight: '100vh', background: '#fff', display: 'flex', flexDirection: 'column' }}>
+    {/* Logo hidden temporarily */}
+    <div style={{
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      padding: '0 24px 80px',
+    }}>
+      <h1 style={{
+        fontSize: 'clamp(6rem, 15vw, 12rem)',
+        fontWeight: 200,
+        color: '#111',
+        lineHeight: 1,
+        margin: 0,
+        letterSpacing: '-0.04em',
+      }}>
+        404
+      </h1>
+      <p style={{ fontSize: 'clamp(18px, 2.5vw, 24px)', fontWeight: 500, color: '#444', margin: '16px 0 8px' }}>
+        Page not found
+      </p>
+      <p style={{ fontSize: 14, color: '#888', margin: '0 0 28px', maxWidth: 400 }}>
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a
+        href="#"
+        onClick={(e) => { e.preventDefault(); window.history.back(); }}
+        style={{ fontSize: 14, color: '#00b18d', textDecoration: 'none', fontWeight: 500 }}
+      >
+        &larr; Go back
+      </a>
+    </div>
+  </div>
 );
 
 const App = () => (
   <>
     <ScrollToTop />
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<NotFoundPage />} />
       <Route path="/evidence" element={<PageWrapper><EvidencePage /></PageWrapper>} />
       <Route path="/protocol" element={<PageWrapper><ProtocolPage /></PageWrapper>} />
       <Route path="/team" element={<PageWrapper><TeamPage /></PageWrapper>} />
