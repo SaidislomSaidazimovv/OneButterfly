@@ -4,65 +4,74 @@ const teams = [
   {
     function: "Celebrity + Distribution",
     members: [
-      { name: "FAME (Sheeraz Hasan)", role: "Celebrity amplification. 25 years. Portfolio: Kardashian, Zendaya, Gomez, Bieber, Lopez, Chopra." },
-      { name: "Komi", role: "125,000 creators. CONFIRMED." },
-      { name: "ITP Media", role: "Broadcast production. Global distribution. CONFIRMED." },
+      { name: "FAME (Sheeraz Hasan)", role: "Celebrity amplification, 25 years", tag: "" },
+      { name: "Komi", role: "125,000 creators", tag: "CONFIRMED" },
+      { name: "ITP Media", role: "Broadcast production", tag: "CONFIRMED" },
     ]
   },
   {
-    function: "Product + Tech",
+    function: "Product + Technology",
     members: [
-      { name: "Richard Jhang", role: "StratMinds — ex-IBM CIO" },
-      { name: "Anton Borzov", role: "StratMinds — First Designer at WhatsApp (1.8B users)" },
-      { name: "Summer Kim", role: "StratMinds" },
+      { name: "Ari Spool", role: "Head of Product. 10+ years (Snap, GIPHY, Know Your Meme).", tag: "" },
+      { name: "Richard Jhang", role: "StratMinds — ex-IBM Chief Innovation Officer", tag: "" },
+      { name: "Anton Borzov", role: "StratMinds — First Designer at WhatsApp. 1.8B users.", tag: "" },
+      { name: "Summer Kim", role: "StratMinds — Global UX", tag: "" },
     ]
   },
   {
-    function: "Clinical",
+    function: "Clinical + Research",
     members: [
-      { name: "Ricky Brar / Brains", role: "Founding clinical partner" },
-      { name: "Cleveland Clinic", role: "Clinical pathway development" },
+      { name: "Ricky Brar (Brains)", role: "Medical Ecosystem Lead", tag: "FOUNDING" },
+      { name: "Cleveland Clinic pathway", role: "Advisory", tag: "" },
     ]
   },
   {
-    function: "Finance",
+    function: "Finance + Institutional",
     members: [
-      { name: "David Knower", role: "Cerberus" },
-      { name: "James Morgon", role: "Milken Institute" },
+      { name: "David Knower", role: "Cerberus", tag: "ADVISOR" },
+      { name: "James Morgon", role: "Milken Institute", tag: "FOUNDING PARTNER" },
     ]
   },
   {
-    function: "Gaming",
+    function: "Gaming + Digital",
     members: [
-      { name: "Sang Yoon Lee", role: "Creta" },
-      { name: "Thomas Vu", role: "Riot Games" },
+      { name: "Sang Yoon Lee", role: "Creta", tag: "FOUNDING" },
+      { name: "Thomas Vu", role: "Riot Games", tag: "ADVISOR" },
     ]
   },
   {
-    function: "Culture",
+    function: "Culture + Events",
     members: [
-      { name: "Andrew Dawson", role: "" },
-      { name: "Ralph Simon", role: "" },
-      { name: "Bernd Breiter", role: "World Club Dome" },
+      { name: "Andrew Dawson", role: "Music", tag: "ADVISOR" },
+      { name: "Ralph Simon", role: "Telco + Music", tag: "ADVISOR" },
+      { name: "Bernd Breiter", role: "World Club Dome — Festival culture", tag: "ADVISOR" },
     ]
   },
   {
     function: "Founding Partners",
     members: [
-      { name: "Ghazzawi", role: "" },
-      { name: "Kwon Hyuk", role: "Naver" },
-      { name: "El Alami", role: "" },
-      { name: "Costa", role: "" },
+      { name: "Adel Ghazzawi", role: "", tag: "" },
+      { name: "Kwon Hyuk", role: "Naver / Happy Bean", tag: "" },
+      { name: "Afifi El Alami", role: "", tag: "" },
+      { name: "Bruno Costa", role: "", tag: "" },
     ]
   },
   {
     function: "Foundation",
     members: [
-      { name: "Evan Klassen", role: "OHF 501(c)(3)" },
-      { name: "Advisory Board", role: "30+ advisors across psychiatry, organizational psychology, emergency medicine, crisis intervention" },
+      { name: "Evan Klassen", role: "Founder", tag: "" },
+      { name: "One Humanity Foundation", role: "501(c)(3). 30+ advisors across 12 industries.", tag: "" },
     ]
   },
 ];
+
+const tagStyles = (tag: string) => {
+  if (!tag) return "";
+  if (tag.includes("FOUNDING")) return "bg-accent text-white";
+  if (tag === "ADVISOR") return "bg-bg-muted text-ink";
+  if (tag === "CONFIRMED") return "bg-accent-light text-accent";
+  return "bg-bg-muted text-ink";
+};
 
 export default function TeamPage() {
   return (
@@ -72,10 +81,10 @@ export default function TeamPage() {
         <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
           <div className="container">
             <FadeIn>
-              <span className="overline mb-4 block text-white/60">THE TEAM</span>
-              <h1 className="mb-6 text-white">Who builds and <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent">deploys this.</span></h1>
+              <span className="overline mb-4 block text-white/60">THE COALITION</span>
+              <h1 className="mb-6 text-white">Built by the coalition <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent">that can launch it.</span></h1>
               <p className="text-[20px] font-medium max-w-[700px] text-white/70">
-                Organized by function. Every name listed is confirmed and active.
+                Organized by function, not biography. Confirmed names only.
               </p>
             </FadeIn>
           </div>
@@ -83,7 +92,7 @@ export default function TeamPage() {
 
         <section className="section bg-bg-muted/30">
           <div className="container">
-            <div className="space-y-12">
+            <div className="space-y-6">
               {teams.map((team, i) => (
                 <FadeIn key={i} delay={i * 0.05}>
                   <div className="card card-hover p-8 md:p-10 border-hair">
@@ -91,8 +100,15 @@ export default function TeamPage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {team.members.map((member, j) => (
                         <div key={j} className="flex flex-col">
-                          <span className="text-ink font-bold text-[18px]">{member.name}</span>
-                          {member.role && <span className="text-muted text-[15px] mt-1">{member.role}</span>}
+                          <div className="flex items-center gap-2 flex-wrap mb-1">
+                            <span className="text-ink font-bold text-[18px]">{member.name}</span>
+                            {member.tag && (
+                              <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ${tagStyles(member.tag)}`}>
+                                {member.tag}
+                              </span>
+                            )}
+                          </div>
+                          {member.role && <span className="text-muted text-[15px]">{member.role}</span>}
                         </div>
                       ))}
                     </div>
@@ -118,7 +134,7 @@ export default function TeamPage() {
 
         <PartnerCTA
           headline="Join the founding coalition."
-          buttonText="Partner with us →"
+          buttonText="Join the founding coalition"
         />
       </main>
       <Footer />

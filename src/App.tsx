@@ -23,28 +23,28 @@ const ScrollToTop = () => {
 const RoutingCards = () => {
   const cards = [
     {
-      to: "/evidence",
-      overline: "THE PROOF",
-      title: "Evidence & ROI",
-      desc: "Data points, research table, ROI calculator, and competitive positioning.",
+      to: "/protocol",
+      overline: "01",
+      title: "The protocol",
+      desc: "4 steps. 30 seconds. How it works.",
     },
     {
-      to: "/protocol",
-      overline: "THE STANDARD",
-      title: "Protocol & Legal",
-      desc: "The 4-step framework, training modules, and legal positioning for your GC.",
+      to: "/evidence",
+      overline: "02",
+      title: "The evidence",
+      desc: "ROI data. Science. 30 seconds vs 8 hours.",
     },
     {
       to: "/team",
-      overline: "THE PEOPLE",
-      title: "Team & Governance",
-      desc: "Celebrity, tech, clinical, finance, gaming, culture — organized by function.",
+      overline: "03",
+      title: "The coalition",
+      desc: "FAME. Komi. ITP. 30+ advisors. Who's building this.",
     },
     {
       to: "/partner",
-      overline: "THE INVITATION",
-      title: "Partner With Us",
-      desc: "Sponsorship tiers, briefing requests, and the founding partnership deadline.",
+      overline: "04",
+      title: "Partner with us",
+      desc: "Founding seats. Category exclusivity. Your next step.",
     },
   ];
 
@@ -86,19 +86,19 @@ const FinalCTA = () => (
   <section className="section bg-accent-light/50 border-none py-32">
     <div className="container text-center max-w-[800px] mx-auto">
       <FadeIn>
-        <h2 className="mb-8 mx-auto">Organizations that move first define what standard looks like for their industry.</h2>
+        <h2 className="mb-8 mx-auto">Organizations that move first define what standard looks like.</h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
           <Link to="/partner" className="btn-primary px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto">Request Implementation Brief</Link>
-          <Link to="/evidence" className="btn-ghost px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto bg-white border-accent">Download the Full Kit — Free</Link>
+          <Link to="/evidence" className="btn-ghost px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto bg-white border-accent">View the Evidence</Link>
         </div>
-        <p className="mt-12 caption font-bold mx-auto">Questions: protocol@onehumanity.org · Response within 24 business hours</p>
+        <p className="mt-12 caption font-bold mx-auto">Questions: hello@butterfly.one · Response within 24 business hours</p>
       </FadeIn>
     </div>
   </section>
 );
 
 /** Simplified Homepage — Change 2 */
-/* const HomePage = () => (
+const HomePage = () => (
   <PageWrapper>
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
@@ -110,15 +110,16 @@ const FinalCTA = () => (
       <Footer />
     </div>
   </PageWrapper>
-); */
+);
 
-import WorkInProgress from './components/WorkInProgress';
+// Preserved for restoration: WorkInProgress overlay
+// import WorkInProgress from './components/WorkInProgress';
 
 const App = () => (
   <>
     <ScrollToTop />
     <Routes>
-      <Route path="/" element={<WorkInProgress />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/evidence" element={<PageWrapper><EvidencePage /></PageWrapper>} />
       <Route path="/protocol" element={<PageWrapper><ProtocolPage /></PageWrapper>} />
       <Route path="/team" element={<PageWrapper><TeamPage /></PageWrapper>} />

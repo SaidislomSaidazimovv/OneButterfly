@@ -1,42 +1,79 @@
 import {
   Navbar, Footer, FadeIn, PartnerCTA,
-  Highlights, Context, Evidence, ROICalculator
+  Context, Evidence, ROICalculator
 } from '../components/shared';
 
-/** New data points per spec — Change 3 */
-const NewDataPoints = () => (
+/** Section 1 — The scale: 6 data tiles per spec */
+const TheScale = () => (
   <section className="section bg-bg-muted/30">
     <div className="container">
       <FadeIn>
-        <span className="overline mb-4 block">THE NUMBERS</span>
-        <h2 className="mb-12">What the data says.</h2>
+        <span className="overline mb-4 block">THE GAP</span>
+        <h2 className="mb-12">The numbers behind the silence.</h2>
       </FadeIn>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {[
-          { stat: "48.6%", desc: "didn't know where to get help", source: "SAMHSA NSDUH, 2023" },
-          { stat: "67 days", desc: "median wait for new psychiatric patients", source: "2023 National Audit" },
-          { stat: "$30–100", desc: "average EAP cost per employee/year at 2–8% utilization", source: "Industry average" },
+          { stat: "970 million", desc: "People affected", source: "WHO, 2019" },
+          { stat: "$5 trillion", desc: "Annual cost", source: "WHO Global Burden" },
+          { stat: "11 years", desc: "Average wait for help", source: "Multiple studies" },
+          { stat: "76%", desc: "Workers with symptoms", source: "Workplace surveys" },
+          { stat: "48.6%", desc: "Didn't know where to get help", source: "SAMHSA NSDUH, 2023" },
+          { stat: "67 days", desc: "Median wait for psychiatrist", source: "2023 National Audit" },
         ].map((item, i) => (
-          <FadeIn key={i} delay={i * 0.1}>
+          <FadeIn key={i} delay={i * 0.05}>
             <div className="card p-8 h-full border-hair">
-              <div className="text-accent font-bold text-[40px] mb-4">{item.stat}</div>
-              <p className="text-ink font-medium text-[18px] mb-2">{item.desc}</p>
+              <div className="text-accent font-bold text-[36px] md:text-[40px] mb-4 leading-tight">{item.stat}</div>
+              <p className="text-ink font-medium text-[16px] md:text-[18px] mb-2">{item.desc}</p>
               <p className="caption text-[13px]">{item.source}</p>
             </div>
           </FadeIn>
         ))}
       </div>
+      <p className="text-[18px] md:text-[20px] text-ink font-medium italic max-w-[640px]">
+        "The systems to help exist. The signal to reach them does not."
+      </p>
     </div>
   </section>
 );
 
-/** Competitive Positioning Table — Change 3 */
+/** Section 2 — The business case: 3 ROI cards before calculator */
+const BusinessCase = () => (
+  <section className="section bg-white">
+    <div className="container">
+      <FadeIn>
+        <span className="overline mb-4 block">THE ROI</span>
+        <h2 className="mb-12">What this saves your organization.</h2>
+      </FadeIn>
+      <div className="grid md:grid-cols-3 gap-6 mb-12">
+        {[
+          { stat: "5:1", desc: "Return on workplace programs", detail: "£4.70 returned per £1 invested", source: "Deloitte UK, 2020" },
+          { stat: "46%", desc: "Productivity loss from untreated conditions", detail: "Across major workforce studies", source: "WHO" },
+          { stat: "$12,000", desc: "Annual cost per disengaged employee", detail: "Lost productivity + turnover impact", source: "Gallup / SHRM" },
+        ].map((item, i) => (
+          <FadeIn key={i} delay={i * 0.1}>
+            <div className="card p-8 h-full border-hair">
+              <div className="text-accent font-bold text-[40px] md:text-[48px] mb-3 leading-tight">{item.stat}</div>
+              <p className="text-ink font-medium text-[18px] mb-3">{item.desc}</p>
+              <p className="text-muted text-[14px] mb-3">{item.detail}</p>
+              <p className="caption text-[13px]">{item.source}</p>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+      <p className="caption text-[14px] max-w-[640px]">
+        Average EAP: $30–100/employee/year at 2–8% utilization.
+      </p>
+    </div>
+  </section>
+);
+
+/** Section 4 — Competitive Positioning: "The activation layer." */
 const CompetitiveTable = () => (
   <section className="section bg-white">
     <div className="container">
       <FadeIn>
-        <span className="overline mb-4 block">COMPETITIVE POSITIONING</span>
-        <h2 className="mb-12">How the Butterfly Protocol compares.</h2>
+        <span className="overline mb-4 block">NOT A REPLACEMENT</span>
+        <h2 className="mb-12">The activation layer.</h2>
       </FadeIn>
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
@@ -90,23 +127,22 @@ export default function EvidencePage() {
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">THE EVIDENCE</span>
-              <h1 className="mb-6 text-white">The proof behind <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent">the protocol.</span></h1>
+              <h1 className="mb-6 text-white">Everything a Brand VP needs to <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent">verify the claims.</span></h1>
               <p className="text-[20px] font-medium max-w-[700px] text-white/70">
-                Every claim is sourced. Every number is cited. Here's what the science says — and what we don't yet claim.
+                Data. Science. Business case. Every claim is sourced. Every number is cited.
               </p>
             </FadeIn>
           </div>
         </section>
-        <Highlights />
-        <NewDataPoints />
+        <TheScale />
+        <BusinessCase />
         <Context />
-        <Evidence />
         <ROICalculator />
+        <Evidence />
         <CompetitiveTable />
         <PartnerCTA
           headline="The numbers make the case. The protocol makes it real."
-          buttonText="Request Implementation Brief"
-          secondaryText="Download the Full Kit — Free"
+          buttonText="Request Partnership Brief"
         />
       </main>
       <Footer />

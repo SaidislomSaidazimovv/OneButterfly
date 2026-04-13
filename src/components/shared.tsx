@@ -78,7 +78,7 @@ export const PartnerCTA = ({ headline = "Ready to partner?", buttonText = "Partn
             <Link to="/partner" className="btn-ghost px-6 md:px-10 py-3 md:py-5 text-base md:text-lg h-auto bg-white border-accent">{secondaryText}</Link>
           )}
         </div>
-        <p className="mt-12 caption font-bold mx-auto">Questions: protocol@onehumanity.org · Response within 24 business hours</p>
+        <p className="mt-12 caption font-bold mx-auto">Questions: hello@butterfly.one · Response within 24 business hours</p>
       </FadeIn>
     </div>
   </section>
@@ -124,7 +124,7 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/partner" className="btn-primary py-2 px-5 text-[13px]">Request Implementation Brief</Link>
+            <Link to="/partner" className="btn-ghost py-2 px-5 text-[13px]">Request Implementation Brief</Link>
           </div>
 
           <button
@@ -163,7 +163,7 @@ export const Navbar = () => {
                     </Link>
                   ))}
                 </div>
-                <Link to="/partner" className="btn-primary py-1 px-4 text-[12px]">Request Implementation Brief</Link>
+                <Link to="/partner" className="btn-ghost py-1 px-4 text-[12px]">Request Implementation Brief</Link>
               </div>
             </div>
           </motion.nav>
@@ -251,7 +251,7 @@ export const Hero = () => {
           <Reveal delay={0.4}>
             <div className="mb-8 inline-flex items-center gap-3 bg-accent-light/50 border border-accent/20 px-4 py-2 rounded-full">
               <span className="text-accent text-sm font-bold">📊 [X] people raised their hand in May 2026.</span>
-              <a href="https://butterflychallenge.org" className="text-accent text-sm font-bold underline">Here's what happens next at work.</a>
+              <a href="https://butterflychallenge.com" className="text-accent text-sm font-bold underline">Here's what happens next at work.</a>
             </div>
           </Reveal>
         )}
@@ -262,35 +262,40 @@ export const Hero = () => {
               <span className="overline mb-2 block font-bold text-caption">THE STANDARD</span>
             </Reveal>
             <Reveal delay={0.6}>
-              <h1 className="mb-4 text-ink leading-tight">The 30‑Second Check‑In.</h1>
+              <h1 className="mb-4 text-ink leading-tight">The Butterfly Movement makes it safe to be human at work.</h1>
             </Reveal>
             <Reveal delay={0.7}>
               <p className="text-[18px] md:text-[22px] text-muted font-medium leading-tight">
-                A deployable protocol for emotional stability at organizational scale. <br className="hidden md:block" /> Designed for HR, ESG, and performance leaders.
+                A 30-second protocol. See. Stay. Ask. Connect.
+              </p>
+            </Reveal>
+            <Reveal delay={0.72}>
+              <p className="text-[16px] md:text-[18px] text-muted font-semibold italic mt-2">
+                Show up.
               </p>
             </Reveal>
             <Reveal delay={0.8}>
               <p className="text-[15px] text-muted mt-4 leading-relaxed max-w-[600px]">
                 The Butterfly Challenge teaches the world to recognize the sign. This site shows organizations what to do when they see it.{' '}
-                <a href="https://butterflychallenge.org" className="text-accent font-bold hover:underline">butterflychallenge.org →</a>
+                <a href="https://butterflychallenge.com" className="text-accent font-bold hover:underline">butterflychallenge.com →</a>
               </p>
             </Reveal>
 
-            {/* 4-Step Protocol Diagram */}
+            {/* 4-Step Protocol Diagram: SEE → STAY → ASK → CONNECT */}
             <Reveal delay={0.85}>
               <div className="flex flex-wrap items-center gap-y-2 mt-6">
                 {[
-                  { num: "1", label: "Recognize" },
-                  { num: "2", label: "Acknowledge" },
-                  { num: "3", label: "Route" },
-                  { num: "4", label: "Document" },
+                  { num: "1", label: "SEE" },
+                  { num: "2", label: "STAY" },
+                  { num: "3", label: "ASK" },
+                  { num: "4", label: "CONNECT" },
                 ].map((step, i) => (
                   <div key={i} className="flex items-center">
                     <div className="flex items-center gap-2">
                       <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-bold text-[12px] sm:text-[13px] shrink-0">
                         {step.num}
                       </div>
-                      <span className="text-ink font-semibold text-[13px] sm:text-[14px] whitespace-nowrap">{step.label}</span>
+                      <span className="text-ink font-semibold text-[13px] sm:text-[14px] whitespace-nowrap tracking-wider">{step.label}</span>
                     </div>
                     {i < 3 && (
                       <ChevronRight size={14} className="text-caption/40 mx-1 sm:mx-2 shrink-0" />
@@ -304,21 +309,21 @@ export const Hero = () => {
           <div className="w-full md:w-auto shrink-0 flex flex-col items-start md:items-end gap-6">
             <Reveal delay={0.9}>
               <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 bg-bg-muted/40 md:backdrop-blur-lg md:p-2 rounded-2xl md:rounded-[32px] md:border border-white/20 md:shadow-sm">
-                <button className="btn-primary px-8 py-3.5 text-[16px] shadow-lg shadow-accent/20 whitespace-nowrap">
-                  Download Kit — Free
-                </button>
+                <Link to="/partner" className="btn-primary px-8 py-3.5 text-[16px] shadow-lg shadow-accent/20 whitespace-nowrap">
+                  Request Implementation Brief
+                </Link>
                 <Link
-                  to="/protocol"
+                  to="/evidence"
                   className="group px-6 py-3.5 text-ink font-semibold flex items-center justify-start gap-2 text-[16px] hover:text-accent transition-colors whitespace-nowrap"
                 >
-                  THE PROTOCOL
+                  View the Evidence
                   <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </Reveal>
             <Reveal delay={1.2}>
               <div className="text-caption text-[11px] font-bold uppercase tracking-[0.2em] opacity-50">
-                Protocol v1.0 · May 3, 2026
+                Protocol v1.0 · One Humanity Foundation · 501(c)(3) · Effective May 2026
               </div>
             </Reveal>
           </div>
@@ -455,6 +460,10 @@ const VolatilityChart = () => {
   useEffect(() => {
     // @ts-ignore
     if (!window.AmCharts) return;
+    // Read brand accent colors from CSS variables so chart matches design system
+    const rootStyles = getComputedStyle(document.documentElement);
+    const accent = rootStyles.getPropertyValue('--accent').trim() || '#0A4AD6';
+    const accentLight = rootStyles.getPropertyValue('--accent-light').trim() || '#E8EEFB';
     const chartData = [
       { year: "2018", attrition: 8, incidents: 4, stress: 30 },
       { year: "2019", attrition: 10, incidents: 6, stress: 35 },
@@ -480,10 +489,10 @@ const VolatilityChart = () => {
       valueAxes: [{ ignoreAxisWidth: true, stackType: "regular", gridAlpha: 0.07, axisAlpha: 0, inside: true }],
       graphs: [
         { id: "g1", type: "line", title: "Attrition", valueField: "attrition", fillColors: ["#E9E9EF", "#D6D6DF"], lineAlpha: 0, fillAlphas: 0.8, showBalloon: false },
-        { id: "g2", type: "line", title: "Incidents", valueField: "incidents", lineAlpha: 0, fillAlphas: 0.8, lineColor: "#5deec6", showBalloon: false },
-        { id: "g3", title: "Volatility Signals", valueField: "stress", lineAlpha: 0.5, lineColor: "#00b18d", bullet: "round", dashLength: 2, bulletBorderAlpha: 1, bulletAlpha: 1, bulletSize: 10, stackable: false, bulletColor: "#0B0B0F", bulletBorderColor: "#FFFFFF", bulletBorderThickness: 3, balloonText: "<div style='margin-bottom:30px;text-shadow: 2px 2px rgba(0, 0, 0, 0.1); font-weight:600;font-size:24px; color:#000000'>[[value]]</div>" }
+        { id: "g2", type: "line", title: "Incidents", valueField: "incidents", lineAlpha: 0, fillAlphas: 0.8, lineColor: accentLight, showBalloon: false },
+        { id: "g3", title: "Volatility Signals", valueField: "stress", lineAlpha: 0.5, lineColor: accent, bullet: "round", dashLength: 2, bulletBorderAlpha: 1, bulletAlpha: 1, bulletSize: 10, stackable: false, bulletColor: "#0B0B0F", bulletBorderColor: "#FFFFFF", bulletBorderThickness: 3, balloonText: "<div style='margin-bottom:30px;text-shadow: 2px 2px rgba(0, 0, 0, 0.1); font-weight:600;font-size:24px; color:#000000'>[[value]]</div>" }
       ],
-      chartCursor: { cursorAlpha: 1, zoomable: false, cursorColor: "#00b18d", categoryBalloonColor: "#0B0B0F", fullWidth: true, categoryBalloonDateFormat: "YYYY", balloonPointerOrientation: "vertical" },
+      chartCursor: { cursorAlpha: 1, zoomable: false, cursorColor: accent, categoryBalloonColor: "#0B0B0F", fullWidth: true, categoryBalloonDateFormat: "YYYY", balloonPointerOrientation: "vertical" },
       balloon: { borderAlpha: 0, fillAlpha: 0, shadowAlpha: 0, offsetX: 40, offsetY: -50 }
     });
     chart.addListener("dataUpdated", () => { chart.zoomToIndexes(1, chartData.length - 1); });
@@ -527,7 +536,7 @@ export const Category = () => (
           A standard, not a program.
         </h2>
         <p className="max-w-2xl mx-auto text-[14px] md:text-[20px] text-[#444] font-medium leading-relaxed">
-          Programs are optional. Standards are operational. The Butterfly Protocol is a shared micro-behavior designed to be trained, measured, audited, and improved — like any safety system.
+          Programs are optional. Standards are operational. The Butterfly Protocol is a shared micro-behavior designed to be trained, measured, audited, and improved — like any safety system. Visible care, built into the workday.
         </p>
       </FadeIn>
       <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-10 lg:gap-16 max-w-5xl mx-auto">
@@ -554,22 +563,22 @@ export const ProtocolStepper = () => {
   const [activeTab, setActiveTab] = useState(0);
   const steps = [
     {
-      title: "1. RECOGNIZE", overline: "STEP 1", headline: "Recognize the signals.",
+      title: "1. SEE", overline: "STEP 1", headline: "Recognize the signals.",
       content: (
         <div className="space-y-6">
-          <p>You see the signals: withdrawal, behavioral shift, visible distress, or the Butterfly gesture. Your obligation: respond within the hour. Do not wait for someone else.</p>
+          <p>Recognize signals — withdrawal, behavioral shift, distress, or the gesture. Your obligation: respond within the hour. Do not wait for someone else.</p>
           <div className="card bg-bg-muted border-none p-6">
             <h4 className="font-bold mb-4 flex items-center gap-2"><AlertCircle size={18} className="text-accent" /> Quick safety check:</h4>
             <ul className="space-y-3">
               <li className="flex gap-3"><span className="text-ink font-bold">•</span><span>Immediate danger → 911 first</span></li>
-              <li className="flex gap-3"><span className="text-ink font-bold">•</span><span>Safe and accessible → Proceed to Step 2</span></li>
+              <li className="flex gap-3"><span className="text-ink font-bold">•</span><span>Safe and accessible → Proceed to STAY</span></li>
             </ul>
           </div>
         </div>
       )
     },
     {
-      title: "2. ACKNOWLEDGE", overline: "STEP 2", headline: "Close the distance.",
+      title: "2. STAY", overline: "STEP 2", headline: "Close the distance.",
       content: (
         <div className="space-y-6">
           <p>Your presence communicates before your words. Use the structure, but keep your own language.</p>
@@ -577,7 +586,7 @@ export const ProtocolStepper = () => {
             {[
               { label: 'OPEN', text: '"I noticed something. I wanted to check in."' },
               { label: 'RELEASE PRESSURE', text: '"You don\'t have to explain anything right now."' },
-              { label: 'OFFER OPTIONS', text: '"What would help most? I can stay, find someone, or share a resource."' }
+              { label: 'OFFER OPTIONS', text: '"What would help most?"' }
             ].map((block, i) => (
               <div key={i} className="flex flex-col md:flex-row border-l-2 border-accent pl-6 py-2">
                 <span className="w-40 font-bold text-caption text-[12px] pt-1">{block.label}</span>
@@ -590,17 +599,17 @@ export const ProtocolStepper = () => {
       )
     },
     {
-      title: "3. ROUTE", overline: "STEP 3", headline: "Recognize and route.",
+      title: "3. ASK", overline: "STEP 3", headline: "Recognize and route.",
       content: (
         <div className="space-y-6">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead><tr className="border-b border-hair"><th className="py-4 font-bold text-caption text-[12px] uppercase">Response</th><th className="py-4 font-bold text-caption text-[12px] uppercase">Your Action</th></tr></thead>
               <tbody className="divide-y divide-hair">
-                <tr><td className="py-4 font-medium italic pr-4">"I just need a moment"</td><td className="py-4">"Take the time you need. I'll check back in 30 minutes."</td></tr>
-                <tr><td className="py-4 font-medium italic pr-4">"I'd like to talk to someone"</td><td className="py-4">Open the Resource Map together. Walk them to the door.</td></tr>
-                <tr><td className="py-4 font-medium italic pr-4">Signs of immediate risk</td><td className="py-4">"Let's call 988 together right now." Stay with them.</td></tr>
-                <tr><td className="py-4 font-medium italic pr-4">Refuses all support</td><td className="py-4">Document. Escalate to your HR/clinical lead today.</td></tr>
+                <tr><td className="py-4 font-medium italic pr-4">"I just need a moment"</td><td className="py-4">"I'll check back in 30 minutes."</td></tr>
+                <tr><td className="py-4 font-medium italic pr-4">"I'd like to talk to someone"</td><td className="py-4">Open Resource Map together.</td></tr>
+                <tr><td className="py-4 font-medium italic pr-4">Signs of immediate risk</td><td className="py-4">"Let's call 988 together." Stay.</td></tr>
+                <tr><td className="py-4 font-medium italic pr-4">Refuses all support</td><td className="py-4">Document. Escalate today.</td></tr>
               </tbody>
             </table>
           </div>
@@ -609,7 +618,7 @@ export const ProtocolStepper = () => {
       )
     },
     {
-      title: "4. DOCUMENT", overline: "STEP 4", headline: "Close the loop.",
+      title: "4. CONNECT", overline: "STEP 4", headline: "Close the loop.",
       content: (
         <div className="space-y-6">
           <p>Log without PII/PHI: date, that a check-in occurred, routing offered, whether accepted.</p>
@@ -686,6 +695,11 @@ export const Comparison = () => (
           </ul>
         </div>
       </div>
+      <div className="mt-12 mb-12 text-center">
+        <p className="text-[24px] md:text-[28px] text-ink font-medium italic max-w-[640px] mx-auto leading-snug">
+          "This is not therapy. It is the doorbell, not the house."
+        </p>
+      </div>
       <div className="mt-12 p-8 card border-hair/50">
         <p className="caption uppercase tracking-widest font-bold mb-4">Regulatory note</p>
         <p className="text-[16px] mb-6">"This is a behavioral response framework, not a medical device. Analogous to first-aid training — not HIPAA-governed, not ADA-triggering on its own."</p>
@@ -715,7 +729,7 @@ export const Evidence = () => {
       <div className="container">
         <FadeIn>
           <span className="overline mb-4 block">THE SCIENCE</span>
-          <h2 className="mb-12">Why this works — the science, plainly stated.</h2>
+          <h2 className="mb-12">Why it works — the science, plainly stated.</h2>
         </FadeIn>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -952,15 +966,15 @@ export const Sponsors = () => (
   <section id="sponsors" className="section bg-bg-muted/30">
     <div className="container">
       <FadeIn>
-        <span className="overline mb-4 block">SPONSORS AND PARTNERS</span>
-        <h2 className="mb-12">For brands and sponsors.</h2>
-        <p className="text-[20px] mb-12 font-medium">[X] million people participated in Butterfly Month 2026. 12 brands were part of it.</p>
+        <span className="overline mb-4 block">THREE TIERS</span>
+        <h2 className="mb-6">Founding partnership. Year 1 of a permanent platform.</h2>
+        <p className="text-[18px] md:text-[20px] mb-12 font-medium max-w-[640px]">Annual commitment. Year 1 of a long-term cultural platform.</p>
       </FadeIn>
       <div className="grid md:grid-cols-3 gap-6 mb-16">
         {[
-          { tier: "Founding Partner", price: "$1M/year", seats: "2-3 seats", features: ["Category exclusive — all activations", "Logo on every kit download + homepage", "Celebrity co-branding"] },
-          { tier: "Campaign Partner", price: "$500K/year", seats: "4-5 seats", features: ["Challenge integration + event presence", "Logo on Resource Maps + co-branded training", "Webinar sponsorship"] },
-          { tier: "Community Partner", price: "$250K/year", seats: "5-10 seats", features: ["Employee protocol + internal deployment", "Logo on site + social mentions", "Impact report inclusion"] }
+          { tier: "Founding Partner", price: "$1M/year", seats: "Category exclusive", features: ["Category exclusive", "All activations", "Documentary consideration", "Full access"] },
+          { tier: "Campaign Partner", price: "$500K/year", seats: "Shared category", features: ["Challenge integration", "Shared category", "Event presence"] },
+          { tier: "Community Partner", price: "$250K/year", seats: "Internal deployment", features: ["Employee protocol", "Internal deployment", "Brand association"] }
         ].map((tier, i) => (
           <div key={i} className={cn("card card-hover p-8 flex flex-col", i === 0 ? "border-accent shadow-lg ring-1 ring-accent/20" : "border-hair shadow-sm")}>
             <div className="flex justify-between items-start mb-2">
@@ -1001,25 +1015,32 @@ export const DeployTimeline = () => (
     <div className="container">
       <FadeIn>
         <span className="overline mb-4 block">DEPLOYMENT</span>
-        <h2 className="mb-12">Deploy in 30 days.</h2>
+        <h2 className="mb-12">Deploy in 90 days.</h2>
       </FadeIn>
       <div className="max-w-[800px] space-y-px bg-hair border border-hair rounded-3xl overflow-hidden">
         {[
-          { week: "Week 0", title: "Review", desc: "Download kit. Review legal brief. Identify training lead." },
-          { week: "Week 1", title: "Train", desc: "First training cohort: managers/team leads (10 min each)." },
-          { week: "Week 2", title: "Infrastructure", desc: "Resource Maps posted. EAP access codes confirmed." },
-          { week: "Week 3", title: "Launch", desc: "Protocol soft-launch. Voluntary pilot group." },
-          { week: "Week 4", title: "Pulse", desc: "Responder confidence pulse survey (3 questions, anonymous)." },
-          { week: "Week 8", title: "Review", desc: "Review: adoption rate, routing engagement, EAP utilization trend." }
+          { phase: "Phase 1", range: "Days 1–30", title: "Foundation", items: ["Designate protocol lead", "Customize script", "Configure routing (EAP, 988, internal)"] },
+          { phase: "Phase 2", range: "Days 31–60", title: "Training", items: ["Manager training (10 min/person)", "Materials distribution", "Data governance setup"] },
+          { phase: "Phase 3", range: "Days 61–90", title: "Activation", items: ["Go-live", "First RE-AIM measurement", "Feedback + refinement"] }
         ].map((item, i) => (
           <div key={i} className="bg-white p-8 flex flex-col md:flex-row gap-6 md:gap-12 hover:bg-bg-muted transition-colors">
-            <span className="w-24 font-bold text-accent uppercase tracking-widest text-[14px]">{item.week}</span>
-            <div><h4 className="font-bold text-ink mb-2 text-[18px]">{item.title}</h4><p className="text-muted">{item.desc}</p></div>
+            <div className="md:w-32 shrink-0">
+              <span className="block font-bold text-accent uppercase tracking-widest text-[14px]">{item.phase}</span>
+              <span className="block caption text-[12px] mt-1">{item.range}</span>
+            </div>
+            <div>
+              <h4 className="font-bold text-ink mb-3 text-[18px]">{item.title}</h4>
+              <ul className="space-y-1.5">
+                {item.items.map((it, j) => (
+                  <li key={j} className="flex gap-2 text-muted text-[15px]"><span className="text-accent font-bold">•</span><span>{it}</span></li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
       <div className="mt-12">
-        <button className="btn-ghost border-hair hover:border-accent px-8 h-14 font-bold">Download 30-Day Deployment Checklist — PDF</button>
+        <button className="btn-ghost border-hair hover:border-accent px-8 h-14 font-bold">Download 90-Day Deployment Checklist — PDF</button>
       </div>
     </div>
   </section>
@@ -1119,25 +1140,41 @@ export const ContactForm = () => {
           <span className="overline mb-4 block uppercase tracking-widest font-bold">CONTACT</span>
           <h2 className="mb-12">Implementation inquiry.</h2>
         </FadeIn>
-        <form className="space-y-6 md:space-y-8" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+        <form
+          className="space-y-6 md:space-y-8"
+          action="mailto:protocol@butterfly.one"
+          method="post"
+          encType="text/plain"
+          onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+        >
           {[
-            { label: "Name", type: "text" },
-            { label: "Organization", type: "text" },
-            { label: "Role", type: "text" },
-            { label: "Email", type: "email" },
+            { label: "Name", type: "text", name: "name" },
+            { label: "Title", type: "text", name: "title" },
+            { label: "Organization", type: "text", name: "organization" },
+            { label: "Email (organization email)", type: "email", name: "email" },
           ].map((field) => (
             <div key={field.label} className="flex flex-col gap-2">
               <label className="text-ink font-serif font-medium">{field.label}</label>
-              <input type={field.type} required className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors" />
+              <input type={field.type} name={field.name} required className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors" />
             </div>
           ))}
           <div className="flex flex-col gap-2">
-            <label className="text-ink font-serif font-medium">Message (optional)</label>
-            <textarea rows={4} className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors resize-none" />
+            <label className="text-ink font-serif font-medium">Tier interest</label>
+            <select name="tier" className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors text-ink">
+              <option value="">Select a tier</option>
+              <option value="founding">Founding Partner — $1M/year</option>
+              <option value="campaign">Campaign Partner — $500K/year</option>
+              <option value="community">Community Partner — $250K/year</option>
+              <option value="exploring">Just exploring</option>
+            </select>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label className="text-ink font-serif font-medium">Message</label>
+            <textarea name="message" rows={4} className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors resize-none" />
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-ink font-serif font-medium">What are we missing? Tell us what matters to your brand.</label>
-            <textarea rows={3} placeholder="Share any context that would help us tailor the brief..." className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors resize-none" />
+            <textarea name="missing" rows={3} placeholder="Share any context that would help us tailor the brief..." className="bg-transparent border-b border-hair py-3 outline-none focus:border-accent transition-colors resize-none" />
           </div>
           <div className="space-y-4">
             <button type="submit" className="btn-primary w-full h-14 text-lg font-bold shadow-xl shadow-accent/20">
@@ -1162,8 +1199,8 @@ export const Footer = () => (
             <img src={logoSvg} alt="butterfly.one" className="w-7 h-7" />
             <span className="font-bold text-ink tracking-tight text-[20px]">butterfly.one</span>
           </Link>
-          <p className="caption leading-relaxed mb-6">A standard by One Humanity Foundation</p>
-          <p className="caption text-accent font-bold">protocol@onehumanity.org</p>
+          <p className="caption leading-relaxed mb-6">One Humanity Foundation · 501(c)(3)</p>
+          <p className="caption text-accent font-bold">hello@butterfly.one</p>
         </div>
         <div>
           <h4 className="font-bold mb-6">Standard</h4>
@@ -1195,7 +1232,7 @@ export const Footer = () => (
       <div className="pt-12 border-t border-hair flex flex-col md:flex-row justify-between gap-8 text-[13px] text-caption font-medium uppercase tracking-widest">
         <div>Seat: New York · 501(c)(3) · Protocol v1.0</div>
         <div>Last updated: April 2, 2026</div>
-        <div>For the Challenge: <a href="https://butterflychallenge.org" className="underline hover:text-ink">butterflychallenge.org</a></div>
+        <div>For the Challenge: <a href="https://butterflychallenge.com" className="underline hover:text-ink">butterflychallenge.com</a></div>
       </div>
     </div>
   </footer>
