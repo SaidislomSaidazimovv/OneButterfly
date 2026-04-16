@@ -97,8 +97,8 @@ const FinalCTA = () => (
   </section>
 );
 
-/** Simplified Homepage — Change 2 */
-const HomePage = () => (
+/** Simplified Homepage — preserved for restoration when WIP ends */
+/* const HomePage = () => (
   <PageWrapper>
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
@@ -110,16 +110,15 @@ const HomePage = () => (
       <Footer />
     </div>
   </PageWrapper>
-);
+); */
 
-// Preserved for restoration: WorkInProgress overlay
-// import WorkInProgress from './components/WorkInProgress';
+import WorkInProgress from './components/WorkInProgress';
 
 const App = () => (
   <>
     <ScrollToTop />
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<WorkInProgress />} />
       <Route path="/evidence" element={<PageWrapper><EvidencePage /></PageWrapper>} />
       <Route path="/protocol" element={<PageWrapper><ProtocolPage /></PageWrapper>} />
       <Route path="/team" element={<PageWrapper><TeamPage /></PageWrapper>} />
