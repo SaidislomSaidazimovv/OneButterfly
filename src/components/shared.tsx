@@ -99,9 +99,9 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: 'Challenge', href: '/challenge' },
     { name: 'Protocol', href: '/protocol' },
-    { name: 'Evidence', href: '/evidence' },
-    { name: 'Team', href: '/team' },
+    { name: 'About', href: '/about' },
     { name: 'Partner', href: '/partner' },
   ];
 
@@ -124,7 +124,7 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/partner" className="btn-ghost py-2 px-5 text-[13px]">Request Implementation Brief</Link>
+            <a href="https://donate.butterfly.one" className="btn-primary py-2 px-5 text-[13px]">Donate</a>
           </div>
 
           <button
@@ -163,7 +163,7 @@ export const Navbar = () => {
                     </Link>
                   ))}
                 </div>
-                <Link to="/partner" className="btn-ghost py-1 px-4 text-[12px]">Request Implementation Brief</Link>
+                <a href="https://donate.butterfly.one" className="btn-primary py-1 px-4 text-[12px]">Donate</a>
               </div>
             </div>
           </motion.nav>
@@ -189,13 +189,13 @@ export const Navbar = () => {
               </Link>
             ))}
             <div className="pt-4 mt-auto border-t border-hair">
-              <Link
-                to="/partner"
+              <a
+                href="https://donate.butterfly.one"
                 className="btn-primary w-full py-3 text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Request Implementation Brief
-              </Link>
+                Donate
+              </a>
             </div>
           </motion.div>
         )}
@@ -1193,45 +1193,52 @@ export const ContactForm = () => {
 export const Footer = () => (
   <footer className="bg-white pt-24 pb-12 border-t border-hair">
     <div className="container">
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         <div>
-          <Link to="/" className="flex items-center gap-2 mb-8">
+          <Link to="/" className="flex items-center gap-2 mb-6">
             <img src={logoSvg} alt="butterfly.one" className="w-7 h-7" />
             <span className="font-bold text-ink tracking-tight text-[20px]">butterfly.one</span>
           </Link>
-          <p className="caption leading-relaxed mb-6">One Humanity Foundation · 501(c)(3)</p>
+          <p className="caption leading-relaxed mb-2">Butterfly Foundation · 501(c)(3)</p>
           <p className="caption text-accent font-bold">hello@butterfly.one</p>
         </div>
         <div>
-          <h4 className="font-bold mb-6">Standard</h4>
-          <ul className="space-y-4 caption font-medium">
+          <h4 className="font-bold mb-6">Explore</h4>
+          <ul className="space-y-3 caption font-medium">
+            <li><Link to="/challenge" className="hover:text-ink">Challenge</Link></li>
             <li><Link to="/protocol" className="hover:text-ink">Protocol</Link></li>
             <li><Link to="/evidence" className="hover:text-ink">Evidence</Link></li>
-            <li><Link to="/team" className="hover:text-ink">Team</Link></li>
+            <li><Link to="/month" className="hover:text-ink">Month</Link></li>
+            <li><Link to="/about" className="hover:text-ink">About</Link></li>
             <li><Link to="/partner" className="hover:text-ink">Partner</Link></li>
+            <li><Link to="/blog" className="hover:text-ink">Blog</Link></li>
           </ul>
         </div>
         <div>
-          <h4 className="font-bold mb-6">Legal</h4>
-          <ul className="space-y-4 caption font-medium">
-            <li><Link to="/protocol" className="hover:text-ink">Privacy</Link></li>
-            <li><Link to="/protocol" className="hover:text-ink">Terms</Link></li>
-            <li><Link to="/protocol" className="hover:text-ink">Safeguarding</Link></li>
-            <li><Link to="/protocol" className="hover:text-ink">Whistleblower</Link></li>
-            <li><Link to="/partner" className="hover:text-ink font-bold text-accent">Request Investor Materials</Link></li>
+          <h4 className="font-bold mb-6">Support</h4>
+          <ul className="space-y-3 caption font-medium">
+            <li><a href="tel:988" className="hover:text-ink">988 — Suicide & Crisis Lifeline</a></li>
+            <li><a href="https://findahelpline.com" className="hover:text-ink">findahelpline.com</a></li>
+          </ul>
+          <h4 className="font-bold mt-8 mb-6">Legal</h4>
+          <ul className="space-y-3 caption font-medium">
+            <li><a href="#" className="hover:text-ink">Privacy</a></li>
+            <li><a href="#" className="hover:text-ink">Terms</a></li>
+            <li><a href="#" className="hover:text-ink">Accessibility</a></li>
+            <li><a href="#" className="hover:text-ink">Safeguarding</a></li>
           </ul>
         </div>
         <div>
           <div className="card bg-bg-muted border-none p-6">
-            <h4 className="font-bold mb-4 text-ink">Not a crisis line.</h4>
+            <h4 className="font-bold mb-3 text-ink">Not a crisis line.</h4>
             <p className="text-[14px] text-muted mb-4">Call or text 988 — Suicide & Crisis Lifeline — 24/7</p>
-            <a href="tel:988" className="text-accent font-bold text-[20px]">988</a>
+            <a href="tel:988" className="text-accent font-bold text-[20px] block mb-4">988</a>
+            <a href="https://findahelpline.com" className="text-accent text-[13px] font-bold hover:underline">findahelpline.com →</a>
           </div>
         </div>
       </div>
-      <div className="pt-12 border-t border-hair flex flex-col md:flex-row justify-between gap-8 text-[13px] text-caption font-medium uppercase tracking-widest">
-        <div>Seat: New York · 501(c)(3) · Protocol v1.0</div>
-        <div>Last updated: April 2, 2026</div>
+      <div className="pt-8 border-t border-hair flex flex-col md:flex-row justify-between gap-4 text-[13px] text-caption font-medium">
+        <div className="uppercase tracking-widest">Butterfly Foundation · 501(c)(3)</div>
         <div>For the Challenge: <a href="https://butterflychallenge.com" className="underline hover:text-ink">butterflychallenge.com</a></div>
       </div>
     </div>

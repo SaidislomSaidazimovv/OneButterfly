@@ -1,59 +1,140 @@
+import { useState } from 'react';
 import {
-  Navbar, Footer, FadeIn,
-  Sponsors, ContactForm, AlertCircle, FileText, Check
+  Navbar, Footer, FadeIn, Link,
+  Sponsors, ContactForm, AlertCircle, FileText, Check, BookOpen, Globe, Target
 } from '../components/shared';
 
-/** Section 1 — The opportunity */
-const Opportunity = () => (
-  <section className="section bg-white">
-    <div className="container max-w-[800px]">
-      <FadeIn>
-        <span className="overline mb-4 block">THE OPPORTUNITY</span>
-        <h2 className="mb-6">Founding partnership. Year 1 of a permanent platform.</h2>
-        <p className="text-[18px] md:text-[20px] leading-relaxed">
-          The Butterfly Movement launches May 2026. Founding partners shape what this means — for their brand, their industry, and the permanent record.
-        </p>
-      </FadeIn>
-    </div>
-  </section>
-);
+/** v2: 3 audience tabs */
+type TabKey = 'schools' | 'workplaces' | 'brands';
 
-/** Section 3 — Activation menu (7 items) */
-const ActivationMenu = () => (
-  <section className="section bg-bg-muted/30">
-    <div className="container max-w-[900px]">
+const tabContent: Record<TabKey, { icon: any; label: string; headline: string; desc: string; bullets: string[]; cta: string }> = {
+  schools: {
+    icon: BookOpen,
+    label: "For Schools",
+    headline: "Free classroom kit. 10-minute lesson plan.",
+    desc: "Age-appropriate curriculum for middle + high school. Teacher guide, poster, and parent letter included.",
+    bullets: [
+      "Complete lesson plan (10 min, no specialist required)",
+      "Teacher facilitation guide",
+      "Counselor + 988 routing worksheet",
+      "Parent-home bridge letter",
+      "Assembly-ready 3-minute video script",
+    ],
+    cta: "Download Classroom Kit",
+  },
+  workplaces: {
+    icon: Globe,
+    label: "For Workplaces",
+    headline: "Deploy the Butterfly Protocol in 90 days.",
+    desc: "A 30-second check-in standard for managers, HR, and team leads — built for OSHA, ADA, HIPAA review.",
+    bullets: [
+      "Full Protocol PDF + pocket card + poster",
+      "10-minute manager training module",
+      "Legal one-pager for General Counsel",
+      "Data governance policy template",
+      "RE-AIM measurement toolkit",
+    ],
+    cta: "Request Deployment Brief",
+  },
+  brands: {
+    icon: Target,
+    label: "For Brands",
+    headline: "Category-exclusive partnership. May activation.",
+    desc: "Founding, Campaign, or Community tier — each aligned to measurable deployment milestones, not marketing decoration.",
+    bullets: [
+      "Category exclusivity (Founding tier)",
+      "Co-branded Butterfly Month content",
+      "Founding event presence (Miami, April 30, F1 Weekend)",
+      "Documentary consideration",
+      "Anti-washing clause protection",
+    ],
+    cta: "Request Partnership Brief",
+  },
+};
+
+const ThreeTabs = () => {
+  const [active, setActive] = useState<TabKey>('workplaces');
+  const tabs: TabKey[] = ['schools', 'workplaces', 'brands'];
+  const current = tabContent[active];
+  const Icon = current.icon;
+
+  return (
+    <section className="section bg-bg-muted/30">
+      <div className="container">
+        <FadeIn>
+          <span className="overline mb-4 block">BRING THIS TO YOUR WORLD</span>
+          <h2 className="mb-12">Three audiences. One protocol.</h2>
+        </FadeIn>
+        <div className="flex border-b border-hair overflow-x-auto no-scrollbar mb-10">
+          {tabs.map((key) => (
+            <button
+              key={key}
+              onClick={() => setActive(key)}
+              className={`px-6 py-4 text-[14px] font-bold tracking-wider transition-all border-b-2 whitespace-nowrap ${
+                active === key
+                  ? "border-accent text-accent"
+                  : "border-transparent text-caption hover:text-ink"
+              }`}
+            >
+              {tabContent[key].label.toUpperCase()}
+            </button>
+          ))}
+        </div>
+        <div className="grid md:grid-cols-[1fr_1fr] gap-12 items-start">
+          <div>
+            <div className="w-12 h-12 rounded-2xl bg-accent-light flex items-center justify-center mb-6">
+              <Icon size={24} className="text-accent" strokeWidth={1.8} />
+            </div>
+            <h3 className="text-ink font-bold text-[28px] md:text-[32px] mb-4 leading-tight">{current.headline}</h3>
+            <p className="text-muted text-[17px] leading-relaxed mb-8">{current.desc}</p>
+            <Link to="/partner" className="btn-primary px-6 py-3 text-[15px]">
+              {current.cta}
+            </Link>
+          </div>
+          <div className="card border-hair p-8 md:p-10">
+            <span className="overline mb-6 block">What you get</span>
+            <ul className="space-y-4">
+              {current.bullets.map((b, i) => (
+                <li key={i} className="flex gap-3 text-ink text-[16px]">
+                  <Check size={18} className="text-accent shrink-0 mt-1" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/** The Alliance — roles grid */
+const TheAlliance = () => (
+  <section className="section bg-white">
+    <div className="container">
       <FadeIn>
-        <span className="overline mb-4 block">ACTIVATION MENU</span>
-        <h2 className="mb-6">Partners choose from:</h2>
+        <span className="overline mb-4 block">THE ALLIANCE</span>
+        <h2 className="mb-12">1,000+ leaders showing up.</h2>
       </FadeIn>
-      <div className="grid sm:grid-cols-2 gap-4 mb-12">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
         {[
-          "Co-branded Butterfly Month content",
-          "Employee protocol deployment (See → Stay → Ask → Connect)",
-          "Category exclusivity (guaranteed)",
-          "Brand integration in challenge creative",
-          "Founding event presence (Miami, April 30, F1 Weekend)",
-          "\"Founding Partner\" designation — permanent",
-          "Documentary consideration",
-        ].map((item, i) => (
-          <FadeIn key={i} delay={i * 0.05}>
-            <div className="card card-hover p-6 border-hair flex gap-3 items-start h-full">
-              <Check size={20} className="text-accent shrink-0 mt-0.5" />
-              <span className="text-ink font-medium text-[15px]">{item}</span>
+          "Creators", "Celebrities", "Athletes", "Educators", "Founders", "Clinicians",
+          "Journalists", "Producers", "Designers", "Engineers", "Counselors", "Community leaders",
+        ].map((role, i) => (
+          <FadeIn key={i} delay={i * 0.03}>
+            <div className="card card-hover p-4 md:p-5 border-hair text-center text-ink font-semibold text-[14px] md:text-[15px]">
+              {role}
             </div>
           </FadeIn>
         ))}
       </div>
-      <p className="text-[16px] text-muted italic">
-        "What are we missing? Tell us what matters to your brand."
-      </p>
     </div>
   </section>
 );
 
-/** Section 4 — Governance (from Constitution) */
+/** Governance */
 const Governance = () => (
-  <section className="section bg-white">
+  <section className="section bg-bg-muted/30">
     <div className="container max-w-[900px]">
       <FadeIn>
         <span className="overline mb-4 block">GOVERNANCE</span>
@@ -61,7 +142,6 @@ const Governance = () => (
         <p className="caption mb-12 font-bold tracking-widest">OHF-BC-2026-001</p>
       </FadeIn>
       <div className="card border-hair p-8 md:p-10 mb-8">
-        <p className="caption uppercase tracking-widest font-bold mb-6">Key governance points (Article III + Article VI)</p>
         <ul className="space-y-4">
           {[
             "Non-political. Non-religious. Non-commercial in its soul.",
@@ -80,45 +160,15 @@ const Governance = () => (
           ))}
         </ul>
       </div>
-      <a href="#" className="text-accent font-bold hover:underline flex items-center gap-2 text-[16px]">
-        Download the full Butterfly Constitution <span aria-hidden>→</span>
+      <a href="#" className="text-accent font-bold hover:underline inline-flex items-center gap-2 text-[16px]">
+        <FileText size={18} /> Download the full Butterfly Constitution
       </a>
     </div>
   </section>
 );
 
-/** Section 5 — Timeline */
-const Timeline = () => (
-  <section className="section bg-bg-muted/30">
-    <div className="container max-w-[900px]">
-      <FadeIn>
-        <span className="overline mb-4 block">TIMELINE</span>
-        <h2 className="mb-12">From now to launch.</h2>
-      </FadeIn>
-      <div className="space-y-px bg-hair border border-hair rounded-3xl overflow-hidden">
-        {[
-          { date: "April 15", title: "Partner commitment deadline", accent: true },
-          { date: "April 30", title: "One Night For One Humanity", desc: "Queen Miami Beach. F1 Weekend." },
-          { date: "May 1", title: "Butterfly Month launches globally" },
-          { date: "May 31", title: "Campaign month ends", desc: "Gesture stays. Protocol continues." },
-        ].map((item, i) => (
-          <FadeIn key={i} delay={i * 0.08}>
-            <div className={`bg-white p-6 md:p-8 flex flex-col md:flex-row gap-3 md:gap-12 hover:bg-bg-muted transition-colors ${item.accent ? 'border-l-4 border-accent' : ''}`}>
-              <span className="md:w-32 shrink-0 font-bold text-accent uppercase tracking-widest text-[14px]">{item.date}</span>
-              <div>
-                <h4 className="font-bold text-ink text-[18px]">{item.title}</h4>
-                {item.desc && <p className="text-muted text-[15px] mt-1">{item.desc}</p>}
-              </div>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-/** Anti-washing inline callout (kept) + downloads */
-const AntiWashingDownloads = () => (
+/** Anti-washing + 53% stat */
+const AntiWashingStat = () => (
   <section className="section bg-white">
     <div className="container max-w-[900px]">
       <FadeIn>
@@ -134,24 +184,13 @@ const AntiWashingDownloads = () => (
         </div>
       </FadeIn>
       <FadeIn>
-        <span className="overline mb-4 block">DOWNLOADS</span>
-        <h2 className="mb-8">For your due diligence.</h2>
+        <div className="card bg-ink text-white border-none p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+          <div className="text-accent-light font-bold text-[64px] md:text-[80px] leading-none shrink-0">53%</div>
+          <p className="text-white/80 text-[18px] md:text-[20px] leading-relaxed">
+            of Gen Z wants your brand to support mental health — more than any other cause.
+          </p>
+        </div>
       </FadeIn>
-      <div className="grid md:grid-cols-3 gap-4">
-        {[
-          { title: "Butterfly Constitution", type: "PDF · Full governance document" },
-          { title: "Partnership Overview", type: "1-page summary" },
-          { title: "Full Appendix", type: "For due diligence" },
-        ].map((d, i) => (
-          <FadeIn key={i} delay={i * 0.05}>
-            <a href="#" className="card card-hover p-6 border-hair flex flex-col h-full hover:shadow-md transition-all">
-              <FileText size={20} className="text-accent mb-3" />
-              <h4 className="font-bold text-ink text-[16px] mb-1">{d.title}</h4>
-              <p className="caption text-[13px]">{d.type}</p>
-            </a>
-          </FadeIn>
-        ))}
-      </div>
     </div>
   </section>
 );
@@ -164,20 +203,19 @@ export default function PartnerPage() {
         <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
           <div className="container">
             <FadeIn>
-              <span className="overline mb-4 block text-white/60">PARTNER WITH US</span>
-              <h1 className="mb-6 text-white">Founding partnership. <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent">Year 1 of a permanent platform.</span></h1>
+              <span className="overline mb-4 block text-white/60">PARTNER</span>
+              <h1 className="mb-6 text-white">Mental health belongs in <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent">every space.</span></h1>
               <p className="text-[20px] font-medium max-w-[700px] text-white/70">
-                The Butterfly Movement launches May 2026. Founding partners shape what this means — for their brand, their industry, and the permanent record.
+                Schools. Workplaces. Brands. Free tools, deployable standards, and category-exclusive partnerships — all anchored by one gesture.
               </p>
             </FadeIn>
           </div>
         </section>
-        <Opportunity />
+        <ThreeTabs />
+        <TheAlliance />
         <Sponsors />
-        <ActivationMenu />
         <Governance />
-        <Timeline />
-        <AntiWashingDownloads />
+        <AntiWashingStat />
         <ContactForm />
       </main>
       <Footer />
