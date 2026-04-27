@@ -13,8 +13,16 @@ import ChallengePage from './pages/ChallengePage';
 import MonthPage from './pages/MonthPage';
 import BlogPage from './pages/BlogPage';
 
-// Preserved for restoration: WorkInProgress overlay
-// import WorkInProgress from './components/WorkInProgress';
+import WorkInProgress from './components/WorkInProgress';
+
+/** Static homepage hosted at /butterfly-one-homepage.html, embedded full-viewport. */
+const StaticHomepage = () => (
+  <iframe
+    src="/butterfly-one-homepage.html"
+    title="Butterfly Foundation"
+    style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', border: 0 }}
+  />
+);
 
 /** Scroll to top on route change */
 const ScrollToTop = () => {
@@ -51,7 +59,7 @@ const HeroSection = () => (
       </FadeIn>
       <FadeIn delay={0.3}>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://butterflychallenge.com" className="btn-primary px-8 py-4 text-[16px] inline-flex items-center gap-2">
+          <a href="https://thebutterflychallenge.com" className="btn-primary px-8 py-4 text-[16px] inline-flex items-center gap-2">
             Join the Movement <ChevronRight size={18} />
           </a>
           <a href="#foundation" className="btn-ghost px-8 py-4 text-[16px] bg-white">
@@ -129,7 +137,7 @@ const FourPrograms = () => (
       <div className="grid md:grid-cols-2 gap-6">
         {[
           { label: "SYMBOL", title: "The Butterfly Symbol", desc: "A universal symbol for mental health — two hands crossed over the chest.", cta: "Learn more →", to: "/protocol", external: false },
-          { label: "CHALLENGE", title: "The Butterfly Challenge", desc: "A viral movement. 60-second videos. One gesture. A billion lives.", cta: "butterflychallenge.com →", to: "https://butterflychallenge.com", external: true },
+          { label: "CHALLENGE", title: "The Butterfly Challenge", desc: "A viral movement. 60-second videos. One gesture. A billion lives.", cta: "thebutterflychallenge.com →", to: "https://thebutterflychallenge.com", external: true },
           { label: "MAY", title: "Butterfly Month", desc: "Every May. Starting 2026. Mental Health Awareness Month becomes a global activation.", cta: "See the month →", to: "/month", external: false },
           { label: "2027", title: "ONETOPIA Festival", desc: "Culture, care, community. Coming 2027.", cta: "Coming soon", to: "#", external: false, disabled: true },
         ].map((card, i) => (
@@ -319,7 +327,7 @@ const FinalCTASection = () => (
           Be the person who showed up.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://butterflychallenge.com" className="bg-white text-accent font-bold px-8 py-4 text-[16px] rounded-full inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
+          <a href="https://thebutterflychallenge.com" className="bg-white text-accent font-bold px-8 py-4 text-[16px] rounded-full inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
             Take the Challenge <ChevronRight size={18} />
           </a>
           <Link to="/protocol" className="border border-white/40 text-white font-bold px-8 py-4 text-[16px] rounded-full inline-flex items-center gap-2 hover:bg-white/10 transition-colors">
@@ -400,8 +408,10 @@ const App = () => (
   <>
     <ScrollToTop />
     <Routes>
-      {/* Homepage — WorkInProgress preserved for restoration if needed */}
-      <Route path="/" element={<HomePage />} />
+      {/* Homepage — static HTML at public/butterfly-one-homepage.html. */}
+      <Route path="/" element={<StaticHomepage />} />
+      <Route path="/wip" element={<WorkInProgress />} />
+      <Route path="/home-preview" element={<HomePage />} />
       <Route path="/challenge" element={<PageWrapper><ChallengePage /></PageWrapper>} />
       <Route path="/protocol" element={<PageWrapper><ProtocolPage /></PageWrapper>} />
       <Route path="/evidence" element={<PageWrapper><EvidencePage /></PageWrapper>} />

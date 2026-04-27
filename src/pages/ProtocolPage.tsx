@@ -12,8 +12,8 @@ const BridgeLine = () => (
         <p className="text-[18px] md:text-[20px] text-ink font-medium leading-relaxed">
           The Butterfly Challenge teaches the world the sign. This page shows organizations what to do when they see it.
         </p>
-        <a href="https://butterflychallenge.com" className="text-accent font-bold hover:underline inline-flex items-center gap-1 mt-3 text-[15px]">
-          See the Challenge → butterflychallenge.com
+        <a href="https://thebutterflychallenge.com" className="text-accent font-bold hover:underline inline-flex items-center gap-1 mt-3 text-[15px]">
+          See the Challenge → thebutterflychallenge.com
         </a>
       </FadeIn>
     </div>
@@ -94,7 +94,7 @@ export default function ProtocolPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <main>
-        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
+        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20">
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">THE PROTOCOL</span>

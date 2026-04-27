@@ -9,7 +9,7 @@ const Participation = () => (
       </FadeIn>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { label: "Individual", title: "Take the Challenge", desc: "Film the gesture. Tag three people. 60 seconds.", to: "https://butterflychallenge.com", external: true, cta: "Take the Challenge →" },
+          { label: "Individual", title: "Take the Challenge", desc: "Film the gesture. Tag three people. 60 seconds.", to: "https://thebutterflychallenge.com", external: true, cta: "Take the Challenge →" },
           { label: "Schools", title: "Classroom kit", desc: "Free curriculum. 10-minute lesson plan. Teacher guide.", to: "/partner", cta: "Get the kit →" },
           { label: "Workplaces", title: "Deploy the Protocol", desc: "30-second check-in. Manager training. Legal brief.", to: "/protocol", cta: "See the protocol →" },
           { label: "Brands", title: "Join the Alliance", desc: "Category-exclusive partnership. May activation. Founding seat.", to: "/partner", cta: "Partner with us →" },
@@ -81,7 +81,7 @@ export default function MonthPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <main>
-        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
+        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20">
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">BUTTERFLY MONTH</span>
@@ -100,7 +100,7 @@ export default function MonthPage() {
             <FadeIn>
               <h2 className="mb-8 mx-auto">Be part of May.</h2>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://butterflychallenge.com" className="btn-primary px-8 py-4 text-[16px] inline-flex items-center gap-2">
+                <a href="https://thebutterflychallenge.com" className="btn-primary px-8 py-4 text-[16px] inline-flex items-center gap-2">
                   Take the Challenge <ChevronRight size={18} />
                 </a>
                 <Link to="/partner" className="btn-ghost px-8 py-4 text-[16px] bg-white border-accent">

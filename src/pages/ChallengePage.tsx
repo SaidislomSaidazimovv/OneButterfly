@@ -59,7 +59,7 @@ export default function ChallengePage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <main>
-        <section className="bg-ink text-white pt-20 md:pt-32 pb-16 md:pb-24 px-6">
+        <section className="bg-ink text-white pt-20 md:pt-32 pb-16 md:pb-24">
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">THE CHALLENGE</span>
@@ -68,12 +68,12 @@ export default function ChallengePage() {
                 The Butterfly Challenge is a 60-second video. A gesture anyone can learn. A language everyone can share.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="https://butterflychallenge.com" className="btn-primary px-8 py-4 text-[16px] inline-flex items-center gap-2">
+                <a href="https://thebutterflychallenge.com" className="btn-primary px-8 py-4 text-[16px] inline-flex items-center gap-2">
                   Take the Challenge <ChevronRight size={18} />
                 </a>
                 <div className="inline-flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-accent-light animate-pulse" />
-                  <span className="text-white/80 text-[14px] font-medium">Counter live at butterflychallenge.com</span>
+                  <span className="text-white/80 text-[14px] font-medium">Counter live at thebutterflychallenge.com</span>
                 </div>
               </div>
             </FadeIn>
@@ -86,7 +86,7 @@ export default function ChallengePage() {
             <FadeIn>
               <h2 className="mb-6 mx-auto">Be the person who showed up.</h2>
               <p className="text-[18px] text-muted mb-8 mx-auto">60 seconds. One gesture. A chain that lifts a billion lives.</p>
-              <a href="https://butterflychallenge.com" className="btn-primary px-10 py-4 text-[16px] inline-flex items-center gap-2">
+              <a href="https://thebutterflychallenge.com" className="btn-primary px-10 py-4 text-[16px] inline-flex items-center gap-2">
                 Take the Challenge <ChevronRight size={18} />
               </a>
             </FadeIn>

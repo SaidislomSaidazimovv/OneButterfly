@@ -61,7 +61,7 @@ export default function DeployPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <main>
-        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20 px-6">
+        <section className="bg-ink text-white pt-20 md:pt-32 pb-12 md:pb-20">
           <div className="container">
             <FadeIn>
               <span className="overline mb-4 block text-white/60">DEPLOY</span>

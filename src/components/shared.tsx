@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+// @ts-ignore
+import butterflyLogo from '../assets/butterfly-logo.svg';
 
 /** Utility for Tailwind class merging */
 export function cn(...inputs: ClassValue[]) {
@@ -84,52 +86,93 @@ export const PartnerCTA = ({ headline = "Ready to partner?", buttonText = "Partn
   </section>
 );
 
-// --- Navbar ---
+// --- Navbar (matches butterfly-one-homepage.html bf-nav) ---
 
 export const Navbar = () => {
-  const [isSticky, setIsSticky] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 600);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const navLinks = [
     { name: 'Challenge', href: '/challenge' },
     { name: 'Protocol', href: '/protocol' },
+    { name: 'Evidence', href: '/evidence' },
+    { name: 'Month', href: '/month' },
     { name: 'About', href: '/about' },
     { name: 'Partner', href: '/partner' },
   ];
 
   return (
     <>
-      <nav className="block top-0 left-0 right-0 z-40 h-[56px] bg-transparent">
-        <div className="container h-full flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logoSvg} alt="butterfly.one" className="w-6 h-6" />
-            <span className="font-semibold text-ink tracking-tight">butterfly.one</span>
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          padding: scrolled ? '12px 0' : '18px 0',
+          background: 'rgba(255,255,255,0.92)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,0.06)' : 'none',
+        }}
+      >
+        <div className="max-w-[1200px] mx-auto px-8 flex items-center justify-between">
+          <Link to="/" aria-label="Butterfly Foundation" className="flex items-center text-ink font-semibold text-[15px] tracking-tight">
+            <img
+              src={butterflyLogo}
+              alt="Butterfly Foundation"
+              style={{ height: scrolled ? 30 : 36, width: 'auto', display: 'block', transition: 'height .3s' }}
+            />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-6">
+          <ul className="hidden lg:flex items-center gap-8 list-none m-0 p-0">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-caption hover:text-ink text-[14px] font-medium transition-colors"
-              >
-                {link.name}
-              </Link>
+              <li key={link.name}>
+                <Link
+                  to={link.href}
+                  className="text-[14px] text-ink transition-opacity"
+                  style={{ opacity: 0.72 }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.72')}
+                >
+                  {link.name}
+                </Link>
+              </li>
             ))}
-            <a href="https://donate.butterfly.one" className="btn-primary py-2 px-5 text-[13px]">Donate</a>
-          </div>
+            <li>
+              <a
+                href="https://donate.butterfly.one"
+                className="rounded-full font-semibold text-[13px] transition-all"
+                style={{
+                  padding: '9px 20px',
+                  border: '1.5px solid var(--accent)',
+                  color: 'var(--accent)',
+                  display: 'inline-block',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'var(--accent)';
+                  e.currentTarget.style.color = '#fff';
+                  e.currentTarget.style.transform = 'scale(1.03)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.color = 'var(--accent)';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+              >
+                Donate
+              </a>
+            </li>
+          </ul>
 
           <button
             className="lg:hidden p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -137,46 +180,12 @@ export const Navbar = () => {
       </nav>
 
       <AnimatePresence>
-        {isSticky && (
-          <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
-            transition={{ duration: 0.4, ease: APPLE_EASE }}
-            className="fixed top-0 left-0 right-0 z-50 h-[56px] border-b border-hair bg-white/80 backdrop-blur-md shadow-sm"
-          >
-            <div className="container h-full flex items-center justify-between">
-              <Link to="/" className="flex items-center gap-2">
-                <img src={logoSvg} alt="butterfly.one" className="w-5 h-5" />
-                <span className="font-semibold text-ink tracking-tight text-sm">butterfly.one</span>
-              </Link>
-
-              <div className="flex items-center gap-6">
-                <div className="hidden md:flex items-center gap-6">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      to={link.href}
-                      className="text-caption hover:text-ink text-[12px] font-medium transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-                <a href="https://donate.butterfly.one" className="btn-primary py-1 px-4 text-[12px]">Donate</a>
-              </div>
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-[56px] left-0 right-0 bottom-0 z-50 bg-white p-6 flex flex-col gap-4 lg:hidden"
+            className="fixed top-[64px] left-0 right-0 bottom-0 z-40 bg-white p-6 flex flex-col gap-4 lg:hidden"
           >
             {navLinks.map((link) => (
               <Link
@@ -191,7 +200,8 @@ export const Navbar = () => {
             <div className="pt-4 mt-auto border-t border-hair">
               <a
                 href="https://donate.butterfly.one"
-                className="btn-primary w-full py-3 text-[15px]"
+                className="block w-full text-center rounded-full py-3 text-[15px] font-semibold"
+                style={{ border: '1.5px solid var(--accent)', color: 'var(--accent)' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Donate
@@ -251,7 +261,7 @@ export const Hero = () => {
           <Reveal delay={0.4}>
             <div className="mb-8 inline-flex items-center gap-3 bg-accent-light/50 border border-accent/20 px-4 py-2 rounded-full">
               <span className="text-accent text-sm font-bold">📊 [X] people raised their hand in May 2026.</span>
-              <a href="https://butterflychallenge.com" className="text-accent text-sm font-bold underline">Here's what happens next at work.</a>
+              <a href="https://thebutterflychallenge.com" className="text-accent text-sm font-bold underline">Here's what happens next at work.</a>
             </div>
           </Reveal>
         )}
@@ -277,7 +287,7 @@ export const Hero = () => {
             <Reveal delay={0.8}>
               <p className="text-[15px] text-muted mt-4 leading-relaxed max-w-[600px]">
                 The Butterfly Challenge teaches the world to recognize the sign. This site shows organizations what to do when they see it.{' '}
-                <a href="https://butterflychallenge.com" className="text-accent font-bold hover:underline">butterflychallenge.com →</a>
+                <a href="https://thebutterflychallenge.com" className="text-accent font-bold hover:underline">thebutterflychallenge.com →</a>
               </p>
             </Reveal>
 
@@ -1190,56 +1200,78 @@ export const ContactForm = () => {
 
 // --- Footer ---
 
+// --- Footer (matches butterfly-one-homepage.html bf-footer) ---
+
 export const Footer = () => (
-  <footer className="bg-white pt-24 pb-12 border-t border-hair">
-    <div className="container">
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+  <footer style={{ background: '#f5f6f9', color: 'var(--caption)', padding: '80px 0 32px', borderTop: '1px solid rgba(15,30,40,0.06)' }}>
+    <div className="max-w-[1200px] mx-auto px-8">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-14">
         <div>
-          <Link to="/" className="flex items-center gap-2 mb-6">
-            <img src={logoSvg} alt="butterfly.one" className="w-7 h-7" />
-            <span className="font-bold text-ink tracking-tight text-[20px]">butterfly.one</span>
-          </Link>
-          <p className="caption leading-relaxed mb-2">Butterfly Foundation · 501(c)(3)</p>
-          <p className="caption text-accent font-bold">hello@butterfly.one</p>
-        </div>
-        <div>
-          <h4 className="font-bold mb-6">Explore</h4>
-          <ul className="space-y-3 caption font-medium">
-            <li><Link to="/challenge" className="hover:text-ink">Challenge</Link></li>
-            <li><Link to="/protocol" className="hover:text-ink">Protocol</Link></li>
-            <li><Link to="/evidence" className="hover:text-ink">Evidence</Link></li>
-            <li><Link to="/month" className="hover:text-ink">Month</Link></li>
-            <li><Link to="/about" className="hover:text-ink">About</Link></li>
-            <li><Link to="/partner" className="hover:text-ink">Partner</Link></li>
-            <li><Link to="/blog" className="hover:text-ink">Blog</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-bold mb-6">Support</h4>
-          <ul className="space-y-3 caption font-medium">
-            <li><a href="tel:988" className="hover:text-ink">988 — Suicide & Crisis Lifeline</a></li>
-            <li><a href="https://findahelpline.com" className="hover:text-ink">findahelpline.com</a></li>
-          </ul>
-          <h4 className="font-bold mt-8 mb-6">Legal</h4>
-          <ul className="space-y-3 caption font-medium">
-            <li><a href="#" className="hover:text-ink">Privacy</a></li>
-            <li><a href="#" className="hover:text-ink">Terms</a></li>
-            <li><a href="#" className="hover:text-ink">Accessibility</a></li>
-            <li><a href="#" className="hover:text-ink">Safeguarding</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="card bg-bg-muted border-none p-6">
-            <h4 className="font-bold mb-3 text-ink">Not a crisis line.</h4>
-            <p className="text-[14px] text-muted mb-4">Call or text 988 — Suicide & Crisis Lifeline — 24/7</p>
-            <a href="tel:988" className="text-accent font-bold text-[20px] block mb-4">988</a>
-            <a href="https://findahelpline.com" className="text-accent text-[13px] font-bold hover:underline">findahelpline.com →</a>
+          <div className="flex items-center gap-2 mb-4">
+            <Link to="/" aria-label="Butterfly Foundation">
+              <img src={butterflyLogo} alt="Butterfly Foundation" style={{ height: 34, width: 'auto', display: 'block' }} />
+            </Link>
+          </div>
+          <p className="text-[13px] leading-[1.6] max-w-[280px] mb-6" style={{ color: 'var(--caption)' }}>
+            Building shared infrastructure for mental health. A 501(c)(3) nonprofit organization.
+          </p>
+          <div className="max-w-[320px]">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: 'var(--caption)' }}>Stay connected</div>
+            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="your@email.com"
+                required
+                className="flex-1 px-4 py-2.5 rounded-full text-[13px] outline-none transition-colors"
+                style={{ background: '#ffffff', border: '1px solid rgba(15,30,40,0.12)', color: 'var(--ink)', fontFamily: 'inherit' }}
+              />
+              <button
+                type="submit"
+                className="rounded-full font-medium text-[13px] px-4 py-2.5 transition-colors text-white"
+                style={{ background: 'var(--accent)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--accent-deep)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--accent)')}
+              >
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
+        <div>
+          <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--ink)' }}>Movement</h4>
+          <ul className="list-none flex flex-col gap-2.5 m-0 p-0">
+            <li><Link to="/challenge" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Challenge</Link></li>
+            <li><Link to="/protocol" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Protocol</Link></li>
+            <li><Link to="/month" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Month</Link></li>
+            <li><Link to="/evidence" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Evidence</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--ink)' }}>Foundation</h4>
+          <ul className="list-none flex flex-col gap-2.5 m-0 p-0">
+            <li><Link to="/about" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>About</Link></li>
+            <li><Link to="/partner" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Partner</Link></li>
+            <li><Link to="/blog" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Blog</Link></li>
+            <li><a href="https://donate.butterfly.one" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Donate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-4" style={{ color: 'var(--ink)' }}>Support</h4>
+          <ul className="list-none flex flex-col gap-2.5 m-0 p-0">
+            <li><a href="tel:988" className="text-[13px]" style={{ color: 'var(--accent)' }}>988 — Crisis Lifeline</a></li>
+            <li><a href="https://findahelpline.com" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>Find a Helpline</a></li>
+            <li><a href="mailto:hello@butterfly.one" className="text-[13px] hover:text-ink" style={{ color: 'var(--caption)' }}>hello@butterfly.one</a></li>
+          </ul>
+        </div>
       </div>
-      <div className="pt-8 border-t border-hair flex flex-col md:flex-row justify-between gap-4 text-[13px] text-caption font-medium">
-        <div className="uppercase tracking-widest">Butterfly Foundation · 501(c)(3)</div>
-        <div>For the Challenge: <a href="https://butterflychallenge.com" className="underline hover:text-ink">butterflychallenge.com</a></div>
+      <div className="pt-8 flex flex-wrap justify-between items-center gap-4 text-[12px]" style={{ borderTop: '1px solid rgba(15,30,40,0.08)', color: 'rgba(15,30,40,0.5)' }}>
+        <div>© 2026 Butterfly Foundation · 501(c)(3) · EIN 00-0000000</div>
+        <div className="flex gap-6">
+          <a href="/privacy" style={{ color: 'rgba(15,30,40,0.5)' }} className="hover:text-ink">Privacy</a>
+          <a href="/terms" style={{ color: 'rgba(15,30,40,0.5)' }} className="hover:text-ink">Terms</a>
+          <a href="/accessibility" style={{ color: 'rgba(15,30,40,0.5)' }} className="hover:text-ink">Accessibility</a>
+          <a href="https://thebutterflychallenge.com" style={{ color: 'rgba(15,30,40,0.5)' }} className="hover:text-ink">thebutterflychallenge.com →</a>
+        </div>
       </div>
     </div>
   </footer>
