@@ -12,8 +12,11 @@ import AboutPage from './pages/AboutPage';
 import ChallengePage from './pages/ChallengePage';
 import MonthPage from './pages/MonthPage';
 import BlogPage from './pages/BlogPage';
+import AccessPage from './pages/AccessPage';
+import PortalPage from './pages/PortalPage';
 
 import WorkInProgress from './components/WorkInProgress';
+import AccessGate from './components/AccessGate';
 
 /** Static homepage hosted at /butterfly-one-homepage.html, embedded full-viewport. */
 const StaticHomepage = () => (
@@ -419,6 +422,10 @@ const App = () => (
       <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
       <Route path="/partner" element={<PageWrapper><PartnerPage /></PageWrapper>} />
       <Route path="/blog" element={<PageWrapper><BlogPage /></PageWrapper>} />
+      {/* Gated partner portal — NDA-signed visitors only. /access is the form,
+          /portal is the gated landing reached via magic-link click. */}
+      <Route path="/access" element={<PageWrapper><AccessPage /></PageWrapper>} />
+      <Route path="/portal" element={<AccessGate><PageWrapper><PortalPage /></PageWrapper></AccessGate>} />
       {/* Legacy routes preserved for inbound links */}
       <Route path="/team" element={<Navigate to="/about" replace />} />
       <Route path="/launch" element={<PageWrapper><LaunchPage /></PageWrapper>} />
